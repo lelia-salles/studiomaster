@@ -122,13 +122,11 @@ set (MacPList "<plist version=\"1.0\">
 <key>CFBundleURLTypes</key>
 <array>
      <dict>
-         <key>CFBundleURLName</key>
-         <string>net.sonobus</string>
-         <key>CFBundleURLSchemes</key>
-         <array>
-              <string>sonobus</string>
-         </array>
-      </dict>
+    <key>CFBundleURLName</key>
+    <string>br.com.mastermusica.studiomaster</string> <key>CFBundleURLSchemes</key>
+    <array>
+         <string>studiomaster</string> </array>
+     </dict>
    </array>
 </dict>
 </plist>")
