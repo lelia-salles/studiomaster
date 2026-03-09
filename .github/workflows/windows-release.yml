@@ -1,0 +1,38 @@
+name: StudioMaster Windows Build
+
+on:
+  push:
+    branches: [ main ] # Roda sempre que você enviar para a main
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive # Importante para trazer o JUCE e AOO
+
+    - name: Install Dependencies (vcpkg)
+      run: |
+        vcpkg install opus:x64-windows
+        vcpkg integrate install
+
+    - name: Configure CMake
+      run: |
+        cmake -B build -G "Visual Studio 17 2022" -A x64 `
+          -DCMAKE_PREFIX_PATH="C:/vcpkg/installed/x64-windows" `
+          -DFormatsToBuild=Standalone
+
+    - name: Build StudioMaster
+      run: |
+        cmake --build build --config Release --target StudioMaster_Standalone
+
+    - name: Upload StudioMaster EXE
+      uses: actions/upload-artifact@v4
+      with:
+        name: StudioMaster-Windows
+        path: build/StudioMaster_artefacts/Release/Standalone/StudioMaster.exe
