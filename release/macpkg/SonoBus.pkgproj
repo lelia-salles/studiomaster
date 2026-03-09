@@ -38,7 +38,7 @@
 									<key>GID</key>
 									<integer>80</integer>
 									<key>PATH</key>
-									<string>../SonoBus/SonoBus.app</string>
+									<string>../StudioMaster/StudioMaster.app</string>
 									<key>PATH_TYPE</key>
 									<integer>1</integer>
 									<key>PERMISSIONS</key>
@@ -581,7 +581,7 @@
 															<key>GID</key>
 															<integer>0</integer>
 															<key>PATH</key>
-															<string>../SonoBus/SonoBus.component</string>
+															<string>../StudioMaster/StudioMaster.component</string>
 															<key>PATH_TYPE</key>
 															<integer>1</integer>
 															<key>PERMISSIONS</key>
@@ -1105,7 +1105,7 @@
 																	<key>GID</key>
 																	<integer>80</integer>
 																	<key>PATH</key>
-																	<string>../SonoBus/SonoBus.aaxplugin</string>
+																	<string>../StudioMaster/StudioMaster.aaxplugin</string>
 																	<key>PATH_TYPE</key>
 																	<integer>1</integer>
 																	<key>PERMISSIONS</key>
@@ -1656,7 +1656,7 @@
 															<key>GID</key>
 															<integer>0</integer>
 															<key>PATH</key>
-															<string>../SonoBus/SonoBus.vst3</string>
+															<string>../StudioMaster/StudioMaster.vst3</string>
 															<key>PATH_TYPE</key>
 															<integer>1</integer>
 															<key>PERMISSIONS</key>
@@ -1684,7 +1684,7 @@
 															<key>GID</key>
 															<integer>0</integer>
 															<key>PATH</key>
-															<string>../SonoBus/SonoBusInstrument.vst3</string>
+															<string>../StudioMaster/StudioMasterInstrument.vst3</string>
 															<key>PATH_TYPE</key>
 															<integer>1</integer>
 															<key>PERMISSIONS</key>
@@ -2221,7 +2221,7 @@
 															<key>GID</key>
 															<integer>0</integer>
 															<key>PATH</key>
-															<string>../SonoBus/SonoBus.vst</string>
+															<string>../StudioMaster/StudioMaster.vst</string>
 															<key>PATH_TYPE</key>
 															<integer>1</integer>
 															<key>PERMISSIONS</key>
@@ -2940,7 +2940,7 @@
 						<key>LANGUAGE</key>
 						<string>English</string>
 						<key>VALUE</key>
-						<string>SonoBus</string>
+						<string>StudioMaster</string>
 					</dict>
 				</array>
 			</dict>
@@ -2971,7 +2971,7 @@
 							<key>LANGUAGE</key>
 							<string>English</string>
 							<key>VALUE</key>
-							<string>SonoBus is only supported on Mac OS 10.9 and above.</string>
+							<string>StudioMaster is only supported on Mac OS 10.9 and above.</string>
 						</dict>
 					</array>
 					<key>NAME</key>
@@ -3172,7 +3172,7 @@
 				</dict>
 			</array>
 			<key>NAME</key>
-			<string>SonoBus Installer</string>
+			<string>StudioMaster Installer</string>
 			<key>PAYLOAD_ONLY</key>
 			<false/>
 			<key>TREAT_MISSING_PRESENTATION_DOCUMENTS_AS_WARNING</key>

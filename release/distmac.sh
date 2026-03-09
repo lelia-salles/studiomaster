@@ -9,34 +9,34 @@ VERSION=$1
 
 
 #BUILDDIR=../Builds/MacOSX/build/Release
-BUILDDIR=../build/SonoBus_artefacts/Release
-INSTBUILDDIR=../build/SonoBusInst_artefacts/Release
+BUILDDIR=../build/StudioMaster_artefacts/Release
+INSTBUILDDIR=../build/StudioMasterInst_artefacts/Release
 
-rm -rf SonoBus
+rm -rf StudioMaster
 
-mkdir -p SonoBus
-
-
-cp ../doc/README_MAC.txt SonoBus/
-
-cp -pLRv ${BUILDDIR}/Standalone/SonoBus.app  SonoBus/
-cp -pLRv ${BUILDDIR}/AU/SonoBus.component  SonoBus/
-cp -pLRv ${BUILDDIR}/VST3/SonoBus.vst3 SonoBus/
-cp -pLRv ${INSTBUILDDIR}/VST3/SonoBusInstrument.vst3 SonoBus/
-cp -pLRv ${BUILDDIR}/VST/SonoBus.vst  SonoBus/
-cp -pRHv ${BUILDDIR}/AAX/SonoBus.aaxplugin  SonoBus/
+mkdir -p StudioMaster
 
 
-#cp -pLRv ${BUILDDIR}/SonoBus.app  SonoBus/
-#cp -pLRv ${BUILDDIR}/SonoBus.component  SonoBus/
-#cp -pLRv ${BUILDDIR}/SonoBus.vst3 SonoBus/
-#cp -pLRv ${BUILDDIR}/SonoBus.vst  SonoBus/
-#cp -pRHv ${BUILDDIR}/SonoBus.aaxplugin  SonoBus/
+cp ../doc/README_MAC.txt StudioMaster/
 
-#ln -sf /Library/Audio/Plug-Ins/Components SonoBus/
-#ln -sf /Library/Audio/Plug-Ins/VST3 SonoBus/
-#ln -sf /Library/Audio/Plug-Ins/VST SonoBus/
-#ln -sf /Library/Application\ Support/Avid/Audio/Plug-Ins SonoBus/
+cp -pLRv ${BUILDDIR}/Standalone/StudioMaster.app  StudioMaster/
+cp -pLRv ${BUILDDIR}/AU/StudioMaster.component  StudioMaster/
+cp -pLRv ${BUILDDIR}/VST3/StudioMaster.vst3 StudioMaster/
+cp -pLRv ${INSTBUILDDIR}/VST3/StudioMasterInstrument.vst3 StudioMaster/
+cp -pLRv ${BUILDDIR}/VST/StudioMaster.vst  StudioMaster/
+cp -pRHv ${BUILDDIR}/AAX/StudioMaster.aaxplugin  StudioMaster/
+
+
+#cp -pLRv ${BUILDDIR}/StudioMaster.app  StudioMaster/
+#cp -pLRv ${BUILDDIR}/StudioMaster.component  StudioMaster/
+#cp -pLRv ${BUILDDIR}/StudioMaster.vst3 StudioMaster/
+#cp -pLRv ${BUILDDIR}/StudioMaster.vst  StudioMaster/
+#cp -pRHv ${BUILDDIR}/StudioMaster.aaxplugin  StudioMaster/
+
+#ln -sf /Library/Audio/Plug-Ins/Components StudioMaster/
+#ln -sf /Library/Audio/Plug-Ins/VST3 StudioMaster/
+#ln -sf /Library/Audio/Plug-Ins/VST StudioMaster/
+#ln -sf /Library/Application\ Support/Avid/Audio/Plug-Ins StudioMaster/
 
 
 # this codesigns and notarizes everything
@@ -49,26 +49,26 @@ fi
 
 # make installer package (and sign it)
 
-rm -f macpkg/SonoBusTemp.pkgproj
+rm -f macpkg/StudioMasterTemp.pkgproj
 
-if ! ./update_package_version.py ${VERSION} macpkg/SonoBus.pkgproj macpkg/SonoBusTemp.pkgproj ; then
+if ! ./update_package_version.py ${VERSION} macpkg/StudioMaster.pkgproj macpkg/StudioMasterTemp.pkgproj ; then
   echo
   echo Error updating package project versions
   echo
   exit 1
 fi
 
-if ! packagesbuild  macpkg/SonoBusTemp.pkgproj ; then
+if ! packagesbuild  macpkg/StudioMasterTemp.pkgproj ; then
   echo 
   echo Error building package
   echo
   exit 1
 fi
 
-mkdir -p SonoBusPkg
-rm -f SonoBusPkg/*
+mkdir -p StudioMasterPkg
+rm -f StudioMasterPkg/*
 
-if ! productsign --sign ${INSTSIGNID} --timestamp  macpkg/build/SonoBus\ Installer.pkg SonoBusPkg/SonoBus\ Installer.pkg ; then
+if ! productsign --sign ${INSTSIGNID} --timestamp  macpkg/build/StudioMaster\ Installer.pkg StudioMasterPkg/StudioMaster\ Installer.pkg ; then
   echo 
   echo Error signing package
   echo

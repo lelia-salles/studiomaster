@@ -23,7 +23,7 @@
       </dict>
     </array>
     <key>NSLocalNetworkUsageDescription</key>
-    <string>SonoBus uses networking to communicate with other local services</string>
+    <string>StudioMaster uses networking to communicate with other local services</string>
     <key>NSMicrophoneUsageDescription</key>
     <string>This app requires audio input. If you do not have an audio interface connected it will use the built-in microphone.</string>
     <key>LSRequiresIPhoneOS</key>
@@ -33,11 +33,11 @@
     <key>CFBundleExecutable</key>
     <string>${EXECUTABLE_NAME}</string>
     <key>CFBundleIdentifier</key>
-    <string>com.Sonosaurus.SonoBus.SonoBusAUv3</string>
+    <string>com.Sonosaurus.StudioMaster.StudioMasterAUv3</string>
     <key>CFBundleName</key>
-    <string>SonoBus</string>
+    <string>StudioMaster</string>
     <key>CFBundleDisplayName</key>
-    <string>SonoBus</string>
+    <string>StudioMaster</string>
     <key>CFBundlePackageType</key>
     <string>XPC!</string>
     <key>CFBundleSignature</key>
@@ -55,7 +55,7 @@
     <key>NSExtension</key>
     <dict>
       <key>NSExtensionPrincipalClass</key>
-      <string>SonoBusAUFactoryAUv3</string>
+      <string>StudioMasterAUFactoryAUv3</string>
       <key>NSExtensionPointIdentifier</key>
       <string>com.apple.AudioUnit-UI</string>
       <key>NSExtensionAttributes</key>
@@ -64,11 +64,11 @@
         <array>
           <dict>
             <key>name</key>
-            <string>Sonosaurus: SonoBus</string>
+            <string>Sonosaurus: StudioMaster</string>
             <key>description</key>
-            <string>SonoBus - Network Audio</string>
+            <string>StudioMaster - Network Audio</string>
             <key>factoryFunction</key>
-            <string>SonoBusAUFactoryAUv3</string>
+            <string>StudioMasterAUFactoryAUv3</string>
             <key>manufacturer</key>
             <string>Sono</string>
             <key>type</key>

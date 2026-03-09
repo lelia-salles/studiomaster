@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#cp -v ../../scripts/SonoBus-mac-sandbox.entitlements SonoBus.entitlements
+#cp -v ../../scripts/StudioMaster-mac-sandbox.entitlements StudioMaster.entitlements
 
-if grep sandbox SonoBus.entitlements &> /dev/null ; then
-   cp -v ../../scripts/SonoBus-mac.entitlements SonoBus.entitlements
+if grep sandbox StudioMaster.entitlements &> /dev/null ; then
+   cp -v ../../scripts/StudioMaster-mac.entitlements StudioMaster.entitlements
 fi

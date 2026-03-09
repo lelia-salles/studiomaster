@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Install prerequisite packages for SonoBus build on Debian based distros
+# Install prerequisite packages for StudioMaster build on Debian based distros
 
 GITREPO="https://github.com/essej/sonobus.git"
 

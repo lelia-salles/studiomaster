@@ -7,14 +7,14 @@ fi
 
 VERSION=$1
 
-rm -f SonoBusPkg.dmg
+rm -f StudioMasterPkg.dmg
 
-cp SonoBus/README_MAC.txt SonoBusPkg/
+cp StudioMaster/README_MAC.txt StudioMasterPkg/
 
-if dropdmg --config-name=SonoBusPkg --layout-folder SonoBusPkgLayout --volume-name="SonoBus v${VERSION}"  --APP_VERSION=v${VERSION}  --signing-identity=C7AF15C3BCF2AD2E5C102B9DB6502CFAE2C8CF3B SonoBusPkg
+if dropdmg --config-name=StudioMasterPkg --layout-folder StudioMasterPkgLayout --volume-name="StudioMaster v${VERSION}"  --APP_VERSION=v${VERSION}  --signing-identity=C7AF15C3BCF2AD2E5C102B9DB6502CFAE2C8CF3B StudioMasterPkg
 then
   mkdir -p ${VERSION}
-  mv -v SonoBusPkg.dmg ${VERSION}/sonobus-${VERSION}-mac.dmg  	
+  mv -v StudioMasterPkg.dmg ${VERSION}/sonobus-${VERSION}-mac.dmg  	
 else
   echo "Error making package DMG"
   exit 2

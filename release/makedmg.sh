@@ -7,12 +7,12 @@ fi
 
 VERSION=$1
 
-rm -f SonoBus.dmg
+rm -f StudioMaster.dmg
 
-if dropdmg --layout-folder SonoBusLayout --volume-name="SonoBus v${VERSION}"  --APP_VERSION=v${VERSION}  --signing-identity=C7AF15C3BCF2AD2E5C102B9DB6502CFAE2C8CF3B SonoBus
+if dropdmg --layout-folder StudioMasterLayout --volume-name="StudioMaster v${VERSION}"  --APP_VERSION=v${VERSION}  --signing-identity=C7AF15C3BCF2AD2E5C102B9DB6502CFAE2C8CF3B StudioMaster
 then
   mkdir -p ${VERSION}
-  mv -v SonoBus.dmg ${VERSION}/sonobus-${VERSION}-mac.dmg  	
+  mv -v StudioMaster.dmg ${VERSION}/sonobus-${VERSION}-mac.dmg  	
 else
   echo "Error making DMG"
   exit 2

@@ -16,41 +16,41 @@ fi
 
 #BUILDDIR='../Builds/VisualStudio2017/x64/Release'
 #BUILDDIR32='../Builds/VisualStudio2017/Win32/Release32'
-BUILDDIR='../build/SonoBus_artefacts/Release'
-BUILDDIR32='../build32/SonoBus_artefacts/Release'
-INSTBUILDDIR='../build/SonoBusInst_artefacts/Release'
-INSTBUILDDIR32='../build32/SonoBusInst_artefacts/Release'
+BUILDDIR='../build/StudioMaster_artefacts/Release'
+BUILDDIR32='../build32/StudioMaster_artefacts/Release'
+INSTBUILDDIR='../build/StudioMasterInst_artefacts/Release'
+INSTBUILDDIR32='../build32/StudioMasterInst_artefacts/Release'
 
-rm -rf SonoBus
+rm -rf StudioMaster
 
-mkdir -p SonoBus/Plugins/VST SonoBus/Plugins/VST3 SonoBus/Plugins/AAX
+mkdir -p StudioMaster/Plugins/VST StudioMaster/Plugins/VST3 StudioMaster/Plugins/AAX
 
-cp -v ../doc/README_WINDOWS.txt SonoBus/README.txt
-cp -v ${BUILDDIR}/Standalone/SonoBus.exe SonoBus/
-cp -pHLRv ${BUILDDIR}/VST3/SonoBus.vst3 SonoBus/Plugins/VST3/
-cp -pHLRv ${INSTBUILDDIR}/VST3/SonoBusInstrument.vst3 SonoBus/Plugins/VST3/
-cp -v ${BUILDDIR}/VST/SonoBus.dll SonoBus/Plugins/VST/
-cp -pHLRv ${BUILDDIR}/AAX/SonoBus.aaxplugin SonoBus/Plugins/AAX/
+cp -v ../doc/README_WINDOWS.txt StudioMaster/README.txt
+cp -v ${BUILDDIR}/Standalone/StudioMaster.exe StudioMaster/
+cp -pHLRv ${BUILDDIR}/VST3/StudioMaster.vst3 StudioMaster/Plugins/VST3/
+cp -pHLRv ${INSTBUILDDIR}/VST3/StudioMasterInstrument.vst3 StudioMaster/Plugins/VST3/
+cp -v ${BUILDDIR}/VST/StudioMaster.dll StudioMaster/Plugins/VST/
+cp -pHLRv ${BUILDDIR}/AAX/StudioMaster.aaxplugin StudioMaster/Plugins/AAX/
 
 
-mkdir -p SonoBus/Plugins32/VST SonoBus/Plugins32/VST3 SonoBus/Plugins32/AAX
+mkdir -p StudioMaster/Plugins32/VST StudioMaster/Plugins32/VST3 StudioMaster/Plugins32/AAX
 
-cp -v ${BUILDDIR32}/Standalone/SonoBus.exe SonoBus/SonoBus32.exe
-cp -pHLRv ${BUILDDIR32}/VST3/SonoBus.vst3 SonoBus/Plugins32/VST3/
-cp -pHLRv ${INSTBUILDDIR32}/VST3/SonoBusInstrument.vst3 SonoBus/Plugins32/VST3/
-cp -v ${BUILDDIR32}/VST/SonoBus.dll SonoBus/Plugins32/VST/
+cp -v ${BUILDDIR32}/Standalone/StudioMaster.exe StudioMaster/StudioMaster32.exe
+cp -pHLRv ${BUILDDIR32}/VST3/StudioMaster.vst3 StudioMaster/Plugins32/VST3/
+cp -pHLRv ${INSTBUILDDIR32}/VST3/StudioMasterInstrument.vst3 StudioMaster/Plugins32/VST3/
+cp -v ${BUILDDIR32}/VST/StudioMaster.dll StudioMaster/Plugins32/VST/
 
 
 
 # sign AAX
 if [ -n "${AAXSIGNCMD}" ]; then
   echo "Signing AAX plugin"
-  ${AAXSIGNCMD} --keypassword "${CERTPASS}"  --in 'SonoBus\Plugins\AAX\Sonobus.aaxplugin' --out 'SonoBus\Plugins\AAX\Sonobus.aaxplugin'
+  ${AAXSIGNCMD} --keypassword "${CERTPASS}"  --in 'StudioMaster\Plugins\AAX\Sonobus.aaxplugin' --out 'StudioMaster\Plugins\AAX\Sonobus.aaxplugin'
 fi
 
 
 # sign executable
-#signtool.exe sign /v /t "http://timestamp.digicert.com" /f "$CERTFILE" /p "$CERTPASS" SonoBus/SonoBus.exe
+#signtool.exe sign /v /t "http://timestamp.digicert.com" /f "$CERTFILE" /p "$CERTPASS" StudioMaster/StudioMaster.exe
 
 mkdir -p instoutput
 rm -f instoutput/*
@@ -63,8 +63,8 @@ iscc /O"instoutput" "/Ssigntool=signtool.exe sign /t http://timestamp.digicert.c
 #ZIPFILE=sonobus-${VERSION}-win.zip
 #cp -v ../doc/README_WINDOWS.txt instoutput/README.txt
 #rm -f ${ZIPFILE}
-#(cd instoutput; zip  ../${ZIPFILE} SonoBus\ Installer.exe README.txt )
+#(cd instoutput; zip  ../${ZIPFILE} StudioMaster\ Installer.exe README.txt )
 
 EXEFILE=sonobus-${VERSION}-win.exe
 rm -f ${EXEFILE}
-cp instoutput/SonoBus-${VERSION}-Installer.exe ${EXEFILE}
+cp instoutput/StudioMaster-${VERSION}-Installer.exe ${EXEFILE}

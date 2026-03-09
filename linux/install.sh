@@ -6,10 +6,10 @@ if [ -n "$1" ] ; then
   PREFIX="$1"
 fi
 
-echo "Installing SonoBus to ${PREFIX} ... (specify destination as command line argument if you want it elsewhere)"
+echo "Installing StudioMaster to ${PREFIX} ... (specify destination as command line argument if you want it elsewhere)"
 
-BUILDDIR=../build/SonoBus_artefacts/Release
-INSTBUILDDIR=../build/SonoBusInst_artefacts/Release
+BUILDDIR=../build/StudioMaster_artefacts/Release
+INSTBUILDDIR=../build/StudioMasterInst_artefacts/Release
 
 mkdir -p ${PREFIX}/bin
 if ! cp ${BUILDDIR}/Standalone/sonobus  ${PREFIX}/bin/sonobus ; then
@@ -25,27 +25,27 @@ chmod +x ${PREFIX}/share/applications/sonobus.desktop
 mkdir -p ${PREFIX}/share/pixmaps
 cp ../images/sonobus_logo@2x.png ${PREFIX}/share/pixmaps/sonobus.png
 
-if [ -d ${BUILDDIR}/VST3/SonoBus.vst3 ] ; then
+if [ -d ${BUILDDIR}/VST3/StudioMaster.vst3 ] ; then
   mkdir -p ${PREFIX}/lib/vst3
-  cp -a ${BUILDDIR}/VST3/SonoBus.vst3 ${PREFIX}/lib/vst3/
+  cp -a ${BUILDDIR}/VST3/StudioMaster.vst3 ${PREFIX}/lib/vst3/
 
-  echo "SonoBus VST3 plugin installed"
+  echo "StudioMaster VST3 plugin installed"
 fi
 
-if [ -d ${INSTBUILDDIR}/VST3/SonoBusInstrument.vst3 ] ; then
+if [ -d ${INSTBUILDDIR}/VST3/StudioMasterInstrument.vst3 ] ; then
   mkdir -p ${PREFIX}/lib/vst3
-  cp -a ${INSTBUILDDIR}/VST3/SonoBusInstrument.vst3 ${PREFIX}/lib/vst3/
+  cp -a ${INSTBUILDDIR}/VST3/StudioMasterInstrument.vst3 ${PREFIX}/lib/vst3/
 
-  echo "SonoBus VST3i plugin installed"
+  echo "StudioMaster VST3i plugin installed"
 fi
 
-if [ -d ${BUILDDIR}/LV2/SonoBus.lv2 ] ; then
+if [ -d ${BUILDDIR}/LV2/StudioMaster.lv2 ] ; then
   mkdir -p ${PREFIX}/lib/lv2
-  cp -a ${BUILDDIR}/LV2/SonoBus.lv2 ${PREFIX}/lib/lv2/
+  cp -a ${BUILDDIR}/LV2/StudioMaster.lv2 ${PREFIX}/lib/lv2/
 
-  echo "SonoBus LV2 plugin installed"
+  echo "StudioMaster LV2 plugin installed"
 fi
 
 
-echo "SonoBus application installed"
+echo "StudioMaster application installed"
 

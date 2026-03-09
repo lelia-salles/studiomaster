@@ -1,0 +1,19 @@
+{
+  "OutputFoldersPerTargetSystem": {
+    "Local Machine": [
+      "out\\build\\x64-Debug",
+      "out\\install\\x64-Debug"
+    ]
+  },
+  "ExpandedNodes": [
+    "",
+    "\\deps",
+    "\\deps\\juce",
+    "\\deps\\juce\\extras",
+    "\\deps\\juce\\extras\\NetworkGraphicsDemo",
+    "\\deps\\juce\\extras\\NetworkGraphicsDemo\\Builds",
+    "\\deps\\juce\\extras\\NetworkGraphicsDemo\\Builds\\VisualStudio2022"
+  ],
+  "SelectedNode": "\\deps\\juce\\extras\\NetworkGraphicsDemo\\Builds\\VisualStudio2022\\NetworkGraphicsDemo.sln",
+  "PreviewInSolutionExplorer": false
+}

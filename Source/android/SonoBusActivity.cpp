@@ -1,11 +1,11 @@
 
 
-#include "SonoBusActivity.h"
+#include "StudioMasterActivity.h"
 
 
 #if JUCE_ANDROID
 
-// SonoBusActivity::SonoBusActivityJavaClass_Class SonoBusActivity::SonoBusActivityJavaClass;
+// StudioMasterActivity::StudioMasterActivityJavaClass_Class StudioMasterActivity::StudioMasterActivityJavaClass;
 
 
 #endif

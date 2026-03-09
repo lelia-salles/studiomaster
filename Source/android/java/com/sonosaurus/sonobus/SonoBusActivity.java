@@ -36,15 +36,15 @@ import java.lang.ref.WeakReference;
 
 
 //==============================================================================
-public class SonoBusActivity   extends Activity
+public class StudioMasterActivity   extends Activity
 {
     //==============================================================================
     private native void appNewIntent (Intent intent);
     private native void appOnResume();
 
-    private final static String TAG = "SonoBus";
+    private final static String TAG = "StudioMaster";
  
-    SonoBusService sbService = null;
+    StudioMasterService sbService = null;
 
     //==============================================================================
     private native void constructNativeClass();
@@ -92,9 +92,9 @@ public class SonoBusActivity   extends Activity
     private ServiceConnection mConnection = new ServiceConnection() {
        @Override
        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-               SonoBusService.MyBinder myBinder = (SonoBusService.MyBinder) iBinder;
+               StudioMasterService.MyBinder myBinder = (StudioMasterService.MyBinder) iBinder;
                sbService = myBinder.getService();
-               if (BuildConfig.DEBUG) Log.v(TAG, "Got SonoBusService Connection");
+               if (BuildConfig.DEBUG) Log.v(TAG, "Got StudioMasterService Connection");
                // now you have the instance of service.
         }
 
@@ -105,11 +105,11 @@ public class SonoBusActivity   extends Activity
     };
 
 
-    private final void startSonoBusService()
+    private final void startStudioMasterService()
     {
-    	startService(new Intent(this, SonoBusService.class));
+    	startService(new Intent(this, StudioMasterService.class));
     	// bind to the service.
-    	bindService(new Intent(this, SonoBusService.class), mConnection, Context.BIND_AUTO_CREATE);
+    	bindService(new Intent(this, StudioMasterService.class), mConnection, Context.BIND_AUTO_CREATE);
 	}
 	
     @Override
@@ -121,7 +121,7 @@ public class SonoBusActivity   extends Activity
            if (sbService == null) {
                int any_delay_in_ms = 1000; //1 Second delay
                new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                   startSonoBusService();
+                   startStudioMasterService();
                }, any_delay_in_ms);
            }
        }

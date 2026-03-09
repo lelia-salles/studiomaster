@@ -346,7 +346,7 @@ SonobusAudioProcessorEditor::SonobusAudioProcessorEditor (SonobusAudioProcessor&
         currConnectionInfo.userName = lastusername;
     }
 
-    mTitleLabel = std::make_unique<Label>("title", TRANS("SonoBus"));
+    mTitleLabel = std::make_unique<Label>("title", TRANS("StudioMaster"));
     mTitleLabel->setFont(20);
     mTitleLabel->setAccessible(false);
     mTitleLabel->setColour(Label::textColourId, Colour(0xff47b0f8));
@@ -2213,7 +2213,7 @@ void SonobusAudioProcessorEditor::buttonClicked (Button* buttonThatWasClicked)
 #endif
             
             // create new timestamped filename
-            String filename = (currGroup.isEmpty() ? "SonoBusSession" : currGroup) + String("_") + Time::getCurrentTime().formatted("%Y-%m-%d_%H.%M.%S");
+            String filename = (currGroup.isEmpty() ? "StudioMasterSession" : currGroup) + String("_") + Time::getCurrentTime().formatted("%Y-%m-%d_%H.%M.%S");
 
             filename = File::createLegalFileName(filename);
 
@@ -2549,7 +2549,7 @@ void SonobusAudioProcessorEditor::showSaveSettingsPreset()
 
     SafePointer<SonobusAudioProcessorEditor> safeThis (this);
 
-    File recdir; // = File::getSpecialLocation(File::userDocumentsDirectory).getChildFile("SonoBus Setups");
+    File recdir; // = File::getSpecialLocation(File::userDocumentsDirectory).getChildFile("StudioMaster Setups");
     String * recentsfolder = nullptr;
     if (getLastRecentsFolder) {
         if ((recentsfolder = getLastRecentsFolder()) != nullptr) {
@@ -2596,7 +2596,7 @@ void SonobusAudioProcessorEditor::showLoadSettingsPreset()
 
     SafePointer<SonobusAudioProcessorEditor> safeThis (this);
 
-    File recdir; // = File::getSpecialLocation(File::userDocumentsDirectory).getChildFile("SonoBus Setups");
+    File recdir; // = File::getSpecialLocation(File::userDocumentsDirectory).getChildFile("StudioMaster Setups");
     String * recentsfolder = nullptr;
     if (getLastRecentsFolder) {
         if ((recentsfolder = getLastRecentsFolder()) != nullptr) {

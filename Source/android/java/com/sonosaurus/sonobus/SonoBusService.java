@@ -18,9 +18,9 @@ import androidx.core.app.NotificationCompat;
 
 import android.util.Log;
 
-public class SonoBusService extends Service {
+public class StudioMasterService extends Service {
 
-     private final static String TAG = "SonoBus";
+     private final static String TAG = "StudioMaster";
     private final static String FOREGROUND_CHANNEL_ID = "foreground_audio_sonobus";
     private NotificationManager mNotificationManager;
     
@@ -37,7 +37,7 @@ public class SonoBusService extends Service {
     public void onCreate() {
         super.onCreate();
 
-        if (BuildConfig.DEBUG) Log.d(TAG, "SonoBus service created");            
+        if (BuildConfig.DEBUG) Log.d(TAG, "StudioMaster service created");            
 
         mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         
@@ -64,7 +64,7 @@ public class SonoBusService extends Service {
         // handle build version above android oreo
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O &&
             mNotificationManager.getNotificationChannel(FOREGROUND_CHANNEL_ID) == null) {
-            CharSequence name = "SonoBus Audio"; //getString(R.string.text_name_notification);
+            CharSequence name = "StudioMaster Audio"; //getString(R.string.text_name_notification);
             int importance = NotificationManager.IMPORTANCE_LOW;
             NotificationChannel channel = new NotificationChannel(FOREGROUND_CHANNEL_ID, name, importance);
             channel.enableVibration(false);
@@ -72,7 +72,7 @@ public class SonoBusService extends Service {
             //Log.d(TAG, "starting notification on O");            
         }
         
-        Intent notificationIntent = new Intent(this, SonoBusActivity.class);
+        Intent notificationIntent = new Intent(this, StudioMasterActivity.class);
         notificationIntent.setAction(Intent.ACTION_MAIN);
         notificationIntent.addCategory(Intent.CATEGORY_LAUNCHER);
         notificationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -96,7 +96,7 @@ public class SonoBusService extends Service {
             notificationBuilder = new NotificationCompat.Builder(this);
         }
         
-        notificationBuilder.setContentTitle("SonoBus")
+        notificationBuilder.setContentTitle("StudioMaster")
         .setContentText("App is active")
         .setOnlyAlertOnce(true)
         .setAutoCancel(true)
@@ -125,13 +125,13 @@ public class SonoBusService extends Service {
     }
     @Override
     public void onDestroy() {
-       if (BuildConfig.DEBUG) Log.d(TAG, "SonoBus service stopped");            
+       if (BuildConfig.DEBUG) Log.d(TAG, "StudioMaster service stopped");            
 
     }
     
     public class MyBinder extends Binder {
-        SonoBusService getService() {
-            return SonoBusService.this;
+        StudioMasterService getService() {
+            return StudioMasterService.this;
         }
     }
     

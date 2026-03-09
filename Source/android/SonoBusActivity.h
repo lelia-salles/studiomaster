@@ -13,24 +13,24 @@
 #include "juce_core/juce_core.h"
 #include "juce_core/native/juce_JNIHelpers_android.h"
 
-class SonoBusActivity
+class StudioMasterActivity
 {
 public:
-    SonoBusActivity(jobject javaObject)
+    StudioMasterActivity(jobject javaObject)
     {
         auto* env = getEnv();
         
         javaCounterpartInstance = env->NewWeakGlobalRef(javaObject);
-        env->SetLongField (javaObject, SonoBusActivityJavaClass.cppCounterpartInstance,
+        env->SetLongField (javaObject, StudioMasterActivityJavaClass.cppCounterpartInstance,
                            reinterpret_cast<jlong> (this));
         
         // initialise the JUCE message manager!
         MessageManager::getInstance();
         
-        DBG("SonoBusActivity C++ constructed");
+        DBG("StudioMasterActivity C++ constructed");
     }
 
-    ~SonoBusActivity()
+    ~StudioMasterActivity()
     {
         auto* env = getEnv();
         
@@ -38,7 +38,7 @@ public:
             LocalRef<jobject> javaThis (env->NewLocalRef (javaCounterpartInstance));
             
             if (javaThis != nullptr)
-                env->SetLongField (javaThis.get(), SonoBusActivityJavaClass.cppCounterpartInstance, 0);
+                env->SetLongField (javaThis.get(), StudioMasterActivityJavaClass.cppCounterpartInstance, 0);
         }
         
         env->DeleteWeakGlobalRef(javaCounterpartInstance);
@@ -55,21 +55,21 @@ private:
     CALLBACK (constructNativeClassJni,   "constructNativeClass",   "()V") \
     CALLBACK (destroyNativeClassJni,     "destroyNativeClass",     "()V") \
     
-    DECLARE_JNI_CLASS (SonoBusActivityJavaClass, JUCE_ANDROID_ACTIVITY_OVERRIDE_CLASSPATH)
+    DECLARE_JNI_CLASS (StudioMasterActivityJavaClass, JUCE_ANDROID_ACTIVITY_OVERRIDE_CLASSPATH)
 #undef JNI_CLASS_MEMBERS
 
 
- static SonoBusActivity* getCppInstance (JNIEnv* env, jobject javaInstance)
+ static StudioMasterActivity* getCppInstance (JNIEnv* env, jobject javaInstance)
     {
         // always call JUCE::initialiseJUCEThread in java callbacks
-        return reinterpret_cast<SonoBusActivity*> (env->GetLongField (javaInstance,
-                                                                                SonoBusActivityJavaClass.cppCounterpartInstance));
+        return reinterpret_cast<StudioMasterActivity*> (env->GetLongField (javaInstance,
+                                                                                StudioMasterActivityJavaClass.cppCounterpartInstance));
     }
     
     static void JNIEXPORT constructNativeClassJni (JNIEnv* env, jobject javaInstance)
     {
         initialiseJuce_GUI();
-        new SonoBusActivity (javaInstance);
+        new StudioMasterActivity (javaInstance);
     }
     
     static void JNIEXPORT destroyNativeClassJni (JNIEnv* env, jobject javaInstance)
@@ -90,7 +90,7 @@ namespace juce {
 #define JNI_CLASS_MEMBERS(METHOD, STATICMETHOD, FIELD, STATICFIELD, CALLBACK) \
     METHOD (setForegroundServiceActive,     "setForegroundServiceActive", "(Z)V")
 
-    DECLARE_JNI_CLASS (SonoBusActivity, JUCE_ANDROID_ACTIVITY_OVERRIDE_CLASSPATH);
+    DECLARE_JNI_CLASS (StudioMasterActivity, JUCE_ANDROID_ACTIVITY_OVERRIDE_CLASSPATH);
 #undef JNI_CLASS_MEMBERS
 
 

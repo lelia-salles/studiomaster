@@ -41,10 +41,10 @@
  #define JucePlugin_Enable_ARA             0
 #endif
 #ifndef  JucePlugin_Name
- #define JucePlugin_Name                   "SonoBus"
+ #define JucePlugin_Name                   "StudioMaster"
 #endif
 #ifndef  JucePlugin_Desc
- #define JucePlugin_Desc                   "SonoBus - Network Audio"
+ #define JucePlugin_Desc                   "StudioMaster - Network Audio"
 #endif
 #ifndef  JucePlugin_Manufacturer
  #define JucePlugin_Manufacturer           "Sonosaurus"
@@ -101,19 +101,19 @@
  #define JucePlugin_AUSubType              JucePlugin_PluginCode
 #endif
 #ifndef  JucePlugin_AUExportPrefix
- #define JucePlugin_AUExportPrefix         SonoBusAU
+ #define JucePlugin_AUExportPrefix         StudioMasterAU
 #endif
 #ifndef  JucePlugin_AUExportPrefixQuoted
- #define JucePlugin_AUExportPrefixQuoted   "SonoBusAU"
+ #define JucePlugin_AUExportPrefixQuoted   "StudioMasterAU"
 #endif
 #ifndef  JucePlugin_AUManufacturerCode
  #define JucePlugin_AUManufacturerCode     JucePlugin_ManufacturerCode
 #endif
 #ifndef  JucePlugin_CFBundleIdentifier
- #define JucePlugin_CFBundleIdentifier     com.Sonosaurus.SonoBus
+ #define JucePlugin_CFBundleIdentifier     com.Sonosaurus.StudioMaster
 #endif
 #ifndef  JucePlugin_AAXIdentifier
- #define JucePlugin_AAXIdentifier          com.Sonosaurus.SonoBus
+ #define JucePlugin_AAXIdentifier          com.Sonosaurus.StudioMaster
 #endif
 #ifndef  JucePlugin_AAXManufacturerCode
  #define JucePlugin_AAXManufacturerCode    JucePlugin_ManufacturerCode
@@ -137,7 +137,7 @@
  #define JucePlugin_IAASubType             JucePlugin_PluginCode
 #endif
 #ifndef  JucePlugin_IAAName
- #define JucePlugin_IAAName                "Sonosaurus: SonoBus"
+ #define JucePlugin_IAAName                "Sonosaurus: StudioMaster"
 #endif
 #ifndef  JucePlugin_VSTNumMidiInputs
  #define JucePlugin_VSTNumMidiInputs       16
@@ -152,10 +152,10 @@
  #define JucePlugin_ARATransformationFlags  0
 #endif
 #ifndef  JucePlugin_ARAFactoryID
- #define JucePlugin_ARAFactoryID           "com.Sonosaurus.SonoBus.factory"
+ #define JucePlugin_ARAFactoryID           "com.Sonosaurus.StudioMaster.factory"
 #endif
 #ifndef  JucePlugin_ARADocumentArchiveID
- #define JucePlugin_ARADocumentArchiveID   "com.Sonosaurus.SonoBus.aradocumentarchive.1.7.1"
+ #define JucePlugin_ARADocumentArchiveID   "com.Sonosaurus.StudioMaster.aradocumentarchive.1.7.1"
 #endif
 #ifndef  JucePlugin_ARACompatibleArchiveIDs
  #define JucePlugin_ARACompatibleArchiveIDs  ""

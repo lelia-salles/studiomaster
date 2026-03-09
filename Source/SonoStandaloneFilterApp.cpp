@@ -60,7 +60,7 @@ extern juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter();
 #include "SonobusPluginEditor.h"
 
 #if JUCE_ANDROID
-#include "android/SonoBusActivity.h"
+#include "android/StudioMasterActivity.h"
 
 #if JUCE_USE_ANDROID_OPENSLES || JUCE_USE_ANDROID_OBOE
   #include "juce_audio_devices/native/juce_HighPerformanceAudioHelpers_android.h"
@@ -83,7 +83,7 @@ public:
 
         options.applicationName     = getApplicationName();
         options.filenameSuffix      = ".settings";
-        options.osxLibrarySubFolder = "Application Support/SonoBus";
+        options.osxLibrarySubFolder = "Application Support/StudioMaster";
        #if JUCE_LINUX
         options.folderName          = "~/.config/sonobus";
        #else
@@ -94,7 +94,7 @@ public:
 
 #if JUCE_LINUX
         // we moved linux settings location in 1.3.19, one time change
-        File oldsettings("~/.config/SonoBus.settings");
+        File oldsettings("~/.config/StudioMaster.settings");
         if (oldsettings.exists()) {
             File newsettings = options.getDefaultFile();
             if (!newsettings.getParentDirectory().exists()) {
@@ -770,7 +770,7 @@ public:
         LocalRef<jobject> activity (getMainActivity());
 
         if (activity != nullptr) {
-            getEnv()->CallVoidMethod(activity.get(), SonoBusActivity.setForegroundServiceActive, flag);
+            getEnv()->CallVoidMethod(activity.get(), StudioMasterActivity.setForegroundServiceActive, flag);
         }
     #endif
     }

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Install prerequisite packages for SonoBus build on Fedora
+# Install prerequisite packages for StudioMaster build on Fedora
 
 GITREPO="https://github.com/essej/sonobus.git"
 

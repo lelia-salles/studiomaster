@@ -414,7 +414,7 @@ static int32_t client_send(void *e, const char *data, int32_t size, void *raddr)
 class SonobusAudioProcessor::SendThread : public juce::Thread
 {
 public:
-    SendThread(SonobusAudioProcessor & processor) : Thread("SonoBusSendThread") , _processor(processor) 
+    SendThread(SonobusAudioProcessor & processor) : Thread("StudioMasterSendThread") , _processor(processor) 
     {}
     
     void run() override {
@@ -448,7 +448,7 @@ public:
 class SonobusAudioProcessor::RecvThread : public juce::Thread
 {
 public:
-    RecvThread(SonobusAudioProcessor & processor) : Thread("SonoBusRecvThread") , _processor(processor) 
+    RecvThread(SonobusAudioProcessor & processor) : Thread("StudioMasterRecvThread") , _processor(processor) 
     {}
     
     void run() override {
@@ -472,7 +472,7 @@ public:
 class SonobusAudioProcessor::EventThread : public juce::Thread
 {
 public:
-    EventThread(SonobusAudioProcessor & processor) : Thread("SonoBusEventThread") , _processor(processor) 
+    EventThread(SonobusAudioProcessor & processor) : Thread("StudioMasterEventThread") , _processor(processor) 
     {}
     
     void run() override {
@@ -494,7 +494,7 @@ public:
 class SonobusAudioProcessor::ServerThread : public juce::Thread
 {
 public:
-    ServerThread(SonobusAudioProcessor & processor) : Thread("SonoBusServerThread") , _processor(processor) 
+    ServerThread(SonobusAudioProcessor & processor) : Thread("StudioMasterServerThread") , _processor(processor) 
     {}
     
     void run() override {
@@ -513,7 +513,7 @@ public:
 class SonobusAudioProcessor::ClientThread : public juce::Thread
 {
 public:
-    ClientThread(SonobusAudioProcessor & processor) : Thread("SonoBusClientThread") , _processor(processor) 
+    ClientThread(SonobusAudioProcessor & processor) : Thread("StudioMasterClientThread") , _processor(processor) 
     {}
     
     void run() override {
@@ -600,7 +600,7 @@ SonobusAudioProcessor::SonobusAudioProcessor()
 mReconnectTimer(*this),
 soundboardChannelProcessor(std::make_unique<SoundboardChannelProcessor>()),
 mGlobalState("SonobusGlobalState"),
-mState (*this, &mUndoManager, "SonoBusAoO",
+mState (*this, &mUndoManager, "StudioMasterAoO",
 {
            std::make_unique<AudioParameterFloat>(ParameterID(paramInGain, 1),     TRANS ("In Gain"),    NormalisableRange<float>(0.0, 4.0, 0.0, 0.33), mInGain.get(), "", AudioProcessorParameter::genericParameter,
                                           [](float v, int maxlen) -> String { return Decibels::toString(Decibels::gainToDecibels(v), 1); }, 
@@ -739,9 +739,9 @@ mState (*this, &mUndoManager, "SonoBusAoO",
     
     // use this to match our main app support dir
     PropertiesFile::Options options;
-    options.applicationName     = "SonoBus";
+    options.applicationName     = "StudioMaster";
     options.filenameSuffix      = ".xml";
-    options.osxLibrarySubFolder = "Application Support/SonoBus";
+    options.osxLibrarySubFolder = "Application Support/StudioMaster";
    #if JUCE_LINUX
     options.folderName          = "~/.config/sonobus";
    #else
@@ -766,7 +766,7 @@ mState (*this, &mUndoManager, "SonoBusAoO",
     // LEAVE EMPTY by default
 #else
     auto parentDir = File::getSpecialLocation (File::userMusicDirectory);
-    parentDir = parentDir.getChildFile("SonoBus");
+    parentDir = parentDir.getChildFile("StudioMaster");
     mDefaultRecordDir = URL(parentDir);
     mLastBrowseDir = mDefaultRecordDir.getLocalFile().getFullPathName();
 #endif
@@ -865,7 +865,7 @@ void SonobusAudioProcessor::moveOldMisplacedFiles()
     PropertiesFile::Options dummyoptions;
     dummyoptions.applicationName     = "dummy";
     dummyoptions.filenameSuffix      = ".xml";
-    dummyoptions.osxLibrarySubFolder = "Application Support/SonoBus";
+    dummyoptions.osxLibrarySubFolder = "Application Support/StudioMaster";
    #if JUCE_LINUX
     dummyoptions.folderName          = "~/.config/sonobus";
    #else
@@ -2394,7 +2394,7 @@ void SonobusAudioProcessor::doReceiveData()
                 }
                 
             } else {
-                DBG("SonoBus bug: unknown aoo type: " << type);
+                DBG("StudioMaster bug: unknown aoo type: " << type);
             }
         }
 
@@ -2407,7 +2407,7 @@ void SonobusAudioProcessor::doReceiveData()
     }
     else {
         // not a valid AoO OSC message
-        DBG("SonoBus: not a valid AOO message!");
+        DBG("StudioMaster: not a valid AOO message!");
     }
         
 }

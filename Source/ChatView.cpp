@@ -649,11 +649,11 @@ void ChatView::showSaveChat()
 {
     SafePointer<ChatView> safeThis (this);
 
-    File recdir; // = File::getSpecialLocation(File::userDocumentsDirectory).getChildFile("SonoBus Setups");
+    File recdir; // = File::getSpecialLocation(File::userDocumentsDirectory).getChildFile("StudioMaster Setups");
 
     // TODO - on iOS we need to give it a name first
 //#if (JUCE_IOS || JUCE_ANDROID)
-    String filename = String("SonoBusChat_") + Time::getCurrentTime().formatted("%Y-%m-%d_%H.%M.%S");
+    String filename = String("StudioMasterChat_") + Time::getCurrentTime().formatted("%Y-%m-%d_%H.%M.%S");
     recdir = File::getSpecialLocation(File::userDocumentsDirectory).getNonexistentChildFile (filename, ".txt");
 //#endif
 

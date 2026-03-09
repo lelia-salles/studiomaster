@@ -1,7 +1,7 @@
 
-# SonoBus
+# StudioMaster
 
-SonoBus is an easy to use application for streaming high-quality, low-latency peer-to-peer audio between devices over the internet or a local network.
+StudioMaster is an easy to use application for streaming high-quality, low-latency peer-to-peer audio between devices over the internet or a local network.
 
 Simply choose a unique group name (with optional password), and instantly connect multiple people together to make music, remote sessions, podcasts, etc. Easily record the audio from everyone, as well as playback any audio content to the whole group.
 
@@ -16,12 +16,12 @@ Easy to setup and use, yet still provides all the details that audio nerds want 
 
 **IMPORTANT TIPS**
 
-SonoBus does not use any echo cancellation, or automatic noise
+StudioMaster does not use any echo cancellation, or automatic noise
 reduction in order to maintain the highest audio quality. As a result, if you have a live microphone signal you will need to also use headphones to prevent echos and/or feedback.
 
 For best results, and to achieve the lowest latencies, connect your computer with wired ethernet to your router if you can. Although it will work with WiFi, the added network jitter and packet loss will require you to use a bigger safety buffer to maintain a quality audio signal, which results in higher latencies.
 
-SonoBus does NOT currently use any encryption for the data
+StudioMaster does NOT currently use any encryption for the data
 communication, so while it is unlikely that it will be
 intercepted, please keep that in mind. All audio is sent directly between users peer-to-peer, the connection server is only used so that the users in a group can find each other.
 
@@ -54,10 +54,10 @@ Make sure you have [CMake](https://cmake.org) >= 3.15 and XCode. Then run:
 ./setupcmake.sh
 ./buildcmake.sh
 ``` 
-The resulting application and plugins will end up under `build/SonoBus_artefacts/Release`
+The resulting application and plugins will end up under `build/StudioMaster_artefacts/Release`
 when the build completes. If you would rather have an Xcode project to look
 at, use `./setupcmakexcode.sh` instead and use the Xcode project that gets
-produced at `buildXcode/SonoBus.xcodeproj`.
+produced at `buildXcode/StudioMaster.xcodeproj`.
 
 ### On Windows
 
@@ -69,9 +69,9 @@ below, but you can also use CMake in other ways if you prefer.
 ./setupcmakewin.sh
 ./buildcmake.sh
 ``` 
-The resulting application and plugins will end up under `build/SonoBus_artefacts/Release`
+The resulting application and plugins will end up under `build/StudioMaster_artefacts/Release`
 when the build completes. The MSVC project/solution can be found in
-build/SonoBus_artefacts as well after the cmake setup step.
+build/StudioMaster_artefacts as well after the cmake setup step.
 
 
 ### On Linux
@@ -86,7 +86,7 @@ further instructions.
 
 # License and 3rd Party Software
 
-SonoBus was written by Jesse Chappell, and it is licensed under the GPLv3, the full license text is in the LICENSE file. Some of the dependencies have their own more permissive licenses.
+StudioMaster was written by Jesse Chappell, and it is licensed under the GPLv3, the full license text is in the LICENSE file. Some of the dependencies have their own more permissive licenses.
 
 It is built using JUCE 6 (slightly modified on a public fork), and AOO (Audio over OSC), which also uses the Opus codec. I'm using the very handy tool `git-subrepo` to include the source code for my forks of those software libraries in this repository.
 
@@ -103,7 +103,7 @@ one at aoo.sonobus.net, you can build the headless aooserver code at
 
 > https://github.com/essej/aooserver
 
-The standalone SonoBus application also provides a connection server internally,
+The standalone StudioMaster application also provides a connection server internally,
 which you can connect to on port 10999, or port forward TCP/UDP 10999 from your internet
 router to the machine you are running it on.
 
