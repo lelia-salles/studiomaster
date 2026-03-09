@@ -157,14 +157,14 @@ function(sono_add_custom_plugin_target target_name product_name formats is_instr
         BUNDLE_ID "com.Mastermusica.StudioMaster"
         MICROPHONE_PERMISSION_ENABLED TRUE
         
-        ICON_BIG "images/sonobus_icon_mac_1024.png"
-        ICON_SMALL "images/sonobus_icon_mac_256.png"
+        ICON_BIG "images/studiomaster_icon_mac_1024.sm.png"
+        ICON_SMALL "images/studiomaster_icon_mac_256.sm.png"
         NEEDS_WEB_BROWSER FALSE
         VST2_CATEGORY "${vst2cat}"
         VST3_CATEGORIES "${vst3cats}"
         AAX_CATEGORY "AAX_ePlugInCategory_None"
 
-	LV2URI "https://sonobus.net/lv2/sonobus"
+	LV2URI "https://mastermusica.com.br/lv2/studiomaster"
 	
         # mac settings
         HARDENED_RUNTIME_ENABLED TRUE
@@ -546,8 +546,8 @@ function(sono_add_custom_plugin_target target_name product_name formats is_instr
         images/settings_icon.svg
         images/skipback_icon.svg
         images/skipforward_icon.svg
-        images/sonobus_logo_96.png
-        images/sonobus_title_small.png
+        images/studiomaster_logo6.sm.png
+        images/studiomaster_title_small.sm_.png
         images/soundboard.svg
         images/speaker.svg
         images/speaker_disabled.svg
