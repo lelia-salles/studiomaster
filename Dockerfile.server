@@ -1,0 +1,25 @@
+# Estágio 1: Compilação (Build)
+FROM debian:stable-slim AS builder
+
+RUN apt-get update && apt-get install -y \
+    build-essential cmake git libopus-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+COPY . .
+
+# Compila apenas o SignalServer (parte leve do SonoBus/StudioMaster)
+RUN cmake -B build -DFormatsToBuild=Standalone -DSONOBUS_SERVER_ONLY=ON
+RUN cmake --build build --config Release --target StudioMaster_Standalone
+
+# Estágio 2: Execução (Runtime leve)
+FROM debian:stable-slim
+WORKDIR /app
+
+# Copia apenas o executável gerado
+COPY --from=builder /app/build/StudioMaster_artefacts/Release/Standalone/studiomaster /app/studiomaster
+
+# Porta padrão do protocolo AOO/SonoBus para sinais
+EXPOSE 10999/udp
+
+ENTRYPOINT ["./studiomaster", "--server", "--port", "10999"]
