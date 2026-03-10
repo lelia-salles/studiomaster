@@ -1,0 +1,10 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/JOAO SALES/studiomaster/buid/deps/juce/tools/cmake_install.cmake",
+		"C:/Users/JOAO SALES/studiomaster/buid/deps/juce/tools/modules/cmake_install.cmake",
+		"C:/Users/JOAO SALES/studiomaster/buid/deps/juce/tools/extras/Build/cmake_install.cmake",
+		"C:/Users/JOAO SALES/studiomaster/buid/deps/juce/tools/extras/Build/juceaide/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

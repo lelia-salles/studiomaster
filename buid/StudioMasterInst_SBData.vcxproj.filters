@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData1.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData2.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData3.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData4.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData5.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData6.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData7.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData8.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData9.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData10.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData11.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData12.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData13.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData14.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData15.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData16.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData17.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData18.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData19.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData20.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData21.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData22.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData23.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData24.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData25.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData26.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData27.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData28.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData29.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData30.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData31.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData32.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData33.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData34.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData35.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData36.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData37.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData38.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData39.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData40.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData41.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData42.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData43.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData44.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData45.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData46.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData47.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData48.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData49.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData50.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData51.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData52.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData53.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData54.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData55.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData56.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData57.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData58.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData59.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData60.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData61.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData62.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData63.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData64.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData65.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData66.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData67.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData68.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData69.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData70.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData71.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData72.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData73.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData74.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData75.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData76.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData77.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData78.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData79.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData80.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData81.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData82.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData83.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData84.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData85.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData86.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData87.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData88.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData89.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData90.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData91.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData92.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData93.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData94.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData95.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData96.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData97.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData98.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData99.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData100.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData101.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData102.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData103.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\JOAO SALES\studiomaster\buid\juce_binarydata_StudioMasterInst_SBData\JuceLibraryCode\BinaryData.h">
+      <Filter>JUCE Library Code</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\JOAO SALES\studiomaster\buid\CMakeFiles\6d8e5f737c9fc62d1feab712197473bc\BinaryData1.cpp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{1C351792-8744-3F84-86B6-DD8FBD2BF73B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JUCE Library Code">
+      <UniqueIdentifier>{6CB70400-C04D-350C-A719-C1653B2C0EFD}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
