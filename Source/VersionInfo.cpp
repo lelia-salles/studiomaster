@@ -1,6 +1,6 @@
-// SPDX-License-Identifier: GPLv3-or-later WITH Appstore-exception
+/// SPDX-License-Identifier: GPLv3-or-later WITH Appstore-exception
 // Copyright (C) 2020 Jesse Chappell
-
+// Modifications Copyright (C) 2026 Master Musica
 
 #include "JuceHeader.h"
 #include "VersionInfo.h"
@@ -27,8 +27,6 @@ std::unique_ptr<InputStream> VersionInfo::createInputStreamForAsset (const Asset
         extraHeaders += "Authorization: Basic " + Base64::toBase64(authuserpass) + "\r\n";
     }
     
-    ;
-    
     return std::unique_ptr<InputStream> (downloadUrl.createInputStream (URL::InputStreamOptions(URL::ParameterHandling::inAddress).withExtraHeaders(extraHeaders).withResponseHeaders(&responseHeaders).withStatusCode(&statusCode).withNumRedirectsToFollow(1)));
 }
 
@@ -36,16 +34,16 @@ bool VersionInfo::isNewerVersionThanCurrent()
 {
     jassert (versionString.isNotEmpty());
 
+    // ProjectInfo::versionString agora vira do seu CMake como StudioMaster
     auto currentTokens = StringArray::fromTokens (ProjectInfo::versionString, ".", {});
     auto thisTokens    = StringArray::fromTokens (versionString, ".", {});
 
-    jassert (thisTokens.size() >= 2 && thisTokens.size() >= 2);
+    jassert (thisTokens.size() >= 2 && currentTokens.size() >= 2);
 
     if (currentTokens[0].getIntValue() == thisTokens[0].getIntValue())
     {
-        // check for 'b' in second token
         if (thisTokens[1].contains("b")) {            
-            return currentTokens[1].compareIgnoreCase(thisTokens[1]); 
+            return currentTokens[1].compareIgnoreCase(thisTokens[1]) < 0; 
         }
         else {
             if (currentTokens[1].getIntValue() == thisTokens[1].getIntValue()) {
@@ -67,12 +65,15 @@ bool VersionInfo::isNewerVersionThanCurrent()
 
 std::unique_ptr<VersionInfo> VersionInfo::fetch (const String& endpoint)
 {
-    URL latestVersionURL ("https://api.github.com/repos/sonosaurus/sonobus/releases/" + endpoint);
-    String extraHeaders;      
+    // AQUI: URL corrigida para o seu repositório oficial
+    URL latestVersionURL ("https://api.github.com/repos/lelia-salles/studiomaster/releases/" + endpoint);
+    
+    // Definimos também a User-Agent, que a API do GitHub exige para chamadas de API
+    String extraHeaders = "User-Agent: StudioMaster-App\r\n";      
     String authuserpass = SystemStats::getEnvironmentVariable("GITUSERPASS", "");
     
     if (authuserpass.isNotEmpty()) {
-        extraHeaders = "Authorization: Basic " + Base64::toBase64(authuserpass) + "\r\n";
+        extraHeaders += "Authorization: Basic " + Base64::toBase64(authuserpass) + "\r\n";
     }
 
     std::unique_ptr<InputStream> inStream (latestVersionURL.createInputStream (URL::InputStreamOptions(URL::ParameterHandling::inAddress).withExtraHeaders(extraHeaders)));
