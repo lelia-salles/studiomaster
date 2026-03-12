@@ -1,16 +1,9 @@
 # To get started on a new plugin, copy this entire folder (containing this file and C++ sources) to
 # a convenient location, and then start making modifications.
 
-# The first line of any CMake project should be a call to `cmake_minimum_required`, which checks
-# that the installed CMake will be able to understand the following CMakeLists, and ensures that
-# CMake's behaviour is compatible with the named version. This is a standard CMake command, so more
-# information can be found in the CMake docs.
-
 cmake_minimum_required(VERSION 3.15)
 
-
 if (WIN32)
-    #set (CMAKE_GENERATOR_TOOLSET ClangCL)
     #static linking in Windows
     set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 endif()
@@ -21,34 +14,22 @@ option(UniversalBinary "Build universal binary for mac" ON)
 if (APPLE)
     set (CMAKE_OSX_DEPLOYMENT_TARGET "10.10" CACHE INTERNAL "")
     if (UniversalBinary)
-        set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64" CACHE INTERNAL "")
-        #set(CMAKE_OSX_ARCHITECTURES arm64 x86_64)        
+        set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64" CACHE INTERNAL "")     
     endif()
 endif()
 
-
-
-
-
-
-
-# The top-level CMakeLists.txt file for a project must contain a literal, direct call to the
-# `project()` command. `project()` sets up some helpful variables that describe source/binary
-# directories, and the current project version. This is a standard CMake command.
-
+# The top-level CMakeLists.txt file for a project must contain a literal, direct call to the project() command.
 project(StudioMaster VERSION 1.7.2)
 
+# ==============================================================================
+# INJEÇÃO MASTER MUSICA: FORÇANDO O ASIO SDK GLOBALMENTE LOGO NO INÍCIO
+# ==============================================================================
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/asiosdk/common")
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/asiosdk/host")
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/asiosdk/host/pc")
+# ==============================================================================
+
 set(BUILDVERSION 80)
-
-
-# If you've installed JUCE somehow (via a package manager, or directly using the CMake install
-# target), you'll need to tell this project that it depends on the installed copy of JUCE. If you've
-# included JUCE directly in your source tree (perhaps as a submodule), you'll need to tell CMake to
-# include that subdirectory as part of the build.
-
-# find_package(JUCE CONFIG REQUIRED)        # If you've installed JUCE to your system
-# or
-
 
 # By default we don't want Xcode schemes to be made for modules, etc
 set(CMAKE_XCODE_GENERATE_SCHEME OFF)
@@ -56,31 +37,19 @@ set(CMAKE_XCODE_GENERATE_SCHEME OFF)
 # No ZERO_CHECK target (it helps bust cache for cmake)
 set(CMAKE_SUPPRESS_REGENERATION true) 
 
-# prevent install all
-#set(CMAKE_SKIP_INSTALL_ALL_DEPENDENCY true)
-
 # Adds all the module sources so they appear correctly in the IDE
-# Must be set before JUCE is added as a sub-dir (or any targets are made)
-# https://github.com/juce-framework/JUCE/commit/6b1b4cf7f6b1008db44411f2c8887d71a3348889
 set_property(GLOBAL PROPERTY USE_FOLDERS YES)
 
 # This is a failed attempt to bury ALL_BUILD in Targets/
-# This should be called before any target is made
-# Bug in Xcode? https://gitlab.kitware.com/cmake/cmake/-/issues/21383
 set_property(GLOBAL PROPERTY PREDEFINED_TARGETS_FOLDER "Targets")
 
 # Create a /Modules directory in the IDE with the JUCE Module code
 option(JUCE_ENABLE_MODULE_SOURCE_GROUPS "Show all module sources in IDE projects" ON)
 
-
 # include JUCE
-
 add_subdirectory(deps/juce EXCLUDE_FROM_ALL )
 
-
 juce_add_modules(deps/ff_meters)
-
-
 
 set (FormatsToBuild VST3 Standalone)
 
@@ -94,16 +63,8 @@ if (UNIX)
     list (APPEND FormatsToBuild LV2)
 endif()
 
-# If you are building a VST2 or AAX plugin, CMake needs to be told where to find these SDKs on your
-# system. This setup should be done before calling `juce_add_plugin`.
-
-#juce_set_vst2_sdk_path("../VST2_SDK")
-#juce_set_aax_sdk_path("../AAX_SDK_2p3p2")
-
-
 if (AAX_SDK_PATH)
     juce_set_aax_sdk_path (${AAX_SDK_PATH})
-    
     if (APPLE OR (NOT ("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "Win32")))
       list (APPEND FormatsToBuild AAX)
     endif()
@@ -113,7 +74,6 @@ if (VST2_SDK_PATH)
     juce_set_vst2_sdk_path (${VST2_SDK_PATH})
     list (APPEND FormatsToBuild VST)
 endif()
-
 
 set (MacPList "<plist version=\"1.0\">
 <dict>
@@ -131,13 +91,6 @@ set (MacPList "<plist version=\"1.0\">
 </dict>
 </plist>")
 
-
-# `juce_add_plugin` adds a static library target with the name passed as the first argument
-# (AudioPluginExample here). This target is a normal CMake target, but has a lot of extra properties set
-# up by default. As well as this shared code static library, this function adds targets for each of
-# the formats specified by the FORMATS arguments. This function accepts many optional arguments.
-# Check the readme at `docs/CMake API.md` in the JUCE repo for the full list.
-
 function(sono_add_custom_plugin_target target_name product_name formats is_instrument plugincode)
 
    if (is_instrument)
@@ -154,7 +107,7 @@ function(sono_add_custom_plugin_target target_name product_name formats is_instr
         NEEDS_MIDI_OUTPUT TRUE
         EDITOR_WANTS_KEYBOARD_FOCUS TRUE
         COMPANY_NAME "Mastermusica"
-        BUNDLE_ID "com.Mastermusica.StudioMaster"
+        BUNDLE_ID "br.com.mastermusica.studiomaster"
         MICROPHONE_PERMISSION_ENABLED TRUE
         
         ICON_BIG "images/sonobus_icon_mac_1024.png"
@@ -164,24 +117,22 @@ function(sono_add_custom_plugin_target target_name product_name formats is_instr
         VST3_CATEGORIES "${vst3cats}"
         AAX_CATEGORY "AAX_ePlugInCategory_None"
 
-	LV2URI "https://mastermusica.com.br/lv2/studiomaster"
-	
+    LV2URI "https://mastermusica.com.br/lv2/studiomaster"
+    
         # mac settings
         HARDENED_RUNTIME_ENABLED TRUE
         HARDENED_RUNTIME_OPTIONS "com.apple.security.device.audio-input"
         PLIST_TO_MERGE "${MacPList}"
         AU_MAIN_TYPE "kAudioUnitType_MusicEffect"
         
-        
         # other settings...
-        PLUGIN_MANUFACTURER_CODE Sono
+        PLUGIN_MANUFACTURER_CODE Mstr
         PLUGIN_CODE ${plugincode}
         FORMATS ${formats}
-        DESCRIPTION "StudioMaster - Network Audio"
+        DESCRIPTION "StudioMaster - Network Audio Platform"
         PRODUCT_NAME "${product_name}")
 
     juce_generate_juce_header("${target_name}")
-
 
     set (HEADER_INCLUDES
         deps/aoo/lib
@@ -200,7 +151,6 @@ function(sono_add_custom_plugin_target target_name product_name formats is_instr
         Source/CrossPlatformUtils.h
       )
 
-
     # platform specific stuff
     if (APPLE)
         list (APPEND HEADER_INCLUDES deps/mac/include)
@@ -210,7 +160,7 @@ function(sono_add_custom_plugin_target target_name product_name formats is_instr
         list (APPEND HEADER_INCLUDES deps/windows ../asiosdk/common)
         list (APPEND PlatSourceFiles  Source/CrossPlatformUtilsWindows.cpp)
 
-	message (STATUS "Win generator platform is: ${CMAKE_VS_PLATFORM_NAME}" )
+    message (STATUS "Win generator platform is: ${CMAKE_VS_PLATFORM_NAME}" )
         if ("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "Win32")
             list (APPEND LIB_PATHS
                 $<$<CONFIG:Debug>:${CMAKE_CURRENT_SOURCE_DIR}/deps/windows/Debug32>
@@ -230,11 +180,9 @@ function(sono_add_custom_plugin_target target_name product_name formats is_instr
     else()
         # Linux
         list (APPEND PlatSourceFiles  Source/CrossPlatformUtilsLinux.cpp)
-	list ( APPEND PLAT_COMPILE_DEFS
-		JUCE_USE_MP3AUDIOFORMAT=1 )
+    list ( APPEND PLAT_COMPILE_DEFS
+        JUCE_USE_MP3AUDIOFORMAT=1 )
     endif()
-
-
 
     set(SourceFiles
         ${PlatSourceFiles}
@@ -385,54 +333,27 @@ function(sono_add_custom_plugin_target target_name product_name formats is_instr
            ${AOOSourceFiles}
        )
 
-    # No, we don't want our source buried in extra nested folders
     set_target_properties("${target_name}" PROPERTIES FOLDER "")
 
-    # The source tree should uhhh, still look like the source tree, yo
     source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR}/Source PREFIX "" FILES ${SourceFiles})
     source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR}/deps/aoo PREFIX "aoo" FILES ${AOOSourceFiles})
 
-    # Move the INTERFACE auto-created JUCE library stuff into its own folder
     source_group("JUCE Library Code" REGULAR_EXPRESSION "juce_")
-
-
-    #target_include_directories("${target_name}"
-    #        INTERFACE
-    #            $<TARGET_PROPERTY:"${target_name}",INCLUDE_DIRECTORIES>)
-
-    
 
     target_include_directories("${target_name}"
         PUBLIC
         ${HEADER_INCLUDES}
     )
 
-
-    # Require at least C++17 to build `my_target`
     target_compile_features("${target_name}" PRIVATE cxx_std_17)
         
-
-    # This cleans up the folder organization, especially on Xcode.
-    # It tucks the Plugin varieties into a "Targets" folder and generate an Xcode Scheme manually
-    # Xcode scheme generation is turned off globally to limit noise from other targets
-    # The non-hacky way of doing this is via the global PREDEFINED_TARGETS_FOLDER property
-    # However that doesn't seem to be working in Xcode
-    # Not all plugin types (au, vst) available on each build type (win, macos, linux)
     foreach(target ${formats} "All")
         if(TARGET ${target_name}_${target})
             set_target_properties(${target_name}_${target} PROPERTIES
-                # Tuck the actual plugin targets into a folder where they won't bother us
                 FOLDER "Targets"
-            
-                # MacOS only: Sets the default executable that Xcode will open on build
-                # For this exact path to to work, manually build the AudioPluginHost.xcodeproj in the JUCE subdir 
-                # XCODE_SCHEME_EXECUTABLE "${CMAKE_CURRENT_SOURCE_DIR}/deps/juce/extras/AudioPluginHost/Builds/MacOSX/build/Debug/AudioPluginHost.app"
-            
-                # Let us build the target in Xcode 
                 XCODE_GENERATE_SCHEME ON)
         endif()
     endforeach()
-    
     
     target_compile_definitions("${target_name}"
         PUBLIC
@@ -441,7 +362,7 @@ function(sono_add_custom_plugin_target target_name product_name formats is_instr
         JUCE_VST3_CAN_REPLACE_VST2=0
         JUCE_DISPLAY_SPLASH_SCREEN=0
         JUCE_USE_CUSTOM_PLUGIN_STANDALONE_APP=1
-	JUCE_USE_WINDOWS_MEDIA_FORMAT=1
+        JUCE_USE_WINDOWS_MEDIA_FORMAT=1
         JUCE_LOAD_CURL_SYMBOLS_LAZILY=1
         JUCE_ASIO=1
         JUCE_WASAPI=1
@@ -450,7 +371,6 @@ function(sono_add_custom_plugin_target target_name product_name formats is_instr
         JUCE_ALSA=1
         JUCE_USE_ANDROID_OBOE=1
         JUCE_USE_OBOE_STABILIZED_CALLBACK=1
-        JUCE_LOAD_CURL_SYMBOLS_LAZILY=1
         FF_AUDIO_ALLOW_ALLOCATIONS_IN_MEASURE_BLOCK=0
         SONOBUS_BUILD_VERSION="${VERSION}"
         ${PLAT_COMPILE_DEFS} )
@@ -458,7 +378,7 @@ function(sono_add_custom_plugin_target target_name product_name formats is_instr
     juce_add_binary_data("${target_name}_SBData" SOURCES
         Source/wordmaker.g
         Source/GoNotoKurrent-Regular.ttf
-	Source/DejaVuSans.ttf
+        Source/DejaVuSans.ttf
         localization/localized_de.txt
         localization/localized_es.txt
         localization/localized_fr.txt
@@ -571,7 +491,7 @@ function(sono_add_custom_plugin_target target_name product_name formats is_instr
 
        find_library(OPUS_LIB opus)
        if (NOT OPUS_LIB)
-	 message(FATAL_ERROR "opus library not found, please install libopus develop package")
+         message(FATAL_ERROR "opus library not found, please install libopus develop package")
        endif()
 
        if (JUCE_LINUX_TARGET_ARCHITECTURE MATCHES "arm" )
@@ -582,17 +502,15 @@ function(sono_add_custom_plugin_target target_name product_name formats is_instr
        endif()
      
        if (TARGET ${target_name}_Standalone)
-           # make linux executable all lower case
            string(TOLOWER ${target_name} tmptargname)
 
            set_target_properties("${target_name}_Standalone"
-	     PROPERTIES
-	       OUTPUT_NAME ${tmptargname}
+         PROPERTIES
+           OUTPUT_NAME ${tmptargname}
            )
        endif()
 
    endif()
-
 
     target_link_directories("${target_name}" INTERFACE
         ${LIB_PATHS}
@@ -602,18 +520,14 @@ function(sono_add_custom_plugin_target target_name product_name formats is_instr
         PRIVATE
             juce::juce_audio_utils
             juce::juce_dsp
-	    juce::juce_cryptography
+            juce::juce_cryptography
             juce::juce_audio_plugin_client
-            
             ff_meters
-            
             ${target_name}_SBData
-
             opus
         PUBLIC
             juce::juce_recommended_config_flags
             juce::juce_recommended_lto_flags
-        #   juce::juce_recommended_warning_flags
         )
             
 endfunction()
@@ -621,9 +535,5 @@ endfunction()
 # most of the targets
 sono_add_custom_plugin_target(StudioMaster StudioMaster "${FormatsToBuild}" FALSE  "NBus")
 
-# Mobile targets
-#sono_add_custom_plugin_target(StudioMasterMobile "AUv3 Standalone" FALSE "NBus")
-
 # add VSTi target
 sono_add_custom_plugin_target(StudioMasterInst "StudioMasterInstrument" "VST3" TRUE  "IBus")
-
