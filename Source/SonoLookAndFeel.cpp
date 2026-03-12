@@ -52,95 +52,97 @@ SonoLookAndFeel::SonoLookAndFeel(bool useUniversalFont) : mUseUniversalFont(useU
 
     //fontScale = 1.2; // 1.125;
 
-    setColourScheme(getDarkColourScheme());
+setColourScheme(getDarkColourScheme());
 
-    getCurrentColourScheme().setUIColour(ColourScheme::UIColour::windowBackground, Colour::fromFloatRGBA(0.0, 0.0, 0.0, 1.0));
-    getCurrentColourScheme().setUIColour(ColourScheme::UIColour::widgetBackground, Colour::fromFloatRGBA(0.1, 0.1, 0.1, 1.0));
+    // Fundo das janelas e widgets com o Azul da Master Musica (#253262)
+    getCurrentColourScheme().setUIColour(ColourScheme::UIColour::windowBackground, Colour::fromFloatRGBA(0.145, 0.196, 0.384, 1.0));
+    getCurrentColourScheme().setUIColour(ColourScheme::UIColour::widgetBackground, Colour::fromFloatRGBA(0.117, 0.196, 0.204, 1.0)); // Dark Slate
     getCurrentColourScheme().setUIColour(ColourScheme::UIColour::outline, Colour::fromFloatRGBA(0.3, 0.3, 0.3, 0.5));
 
-    setColour (Label::textColourId, Colour (0xffcccccc));
-    setColour (Label::textWhenEditingColourId, Colour (0xffe9e9e9));
+    // Textos com o Off-White da Master Musica (#fcfdfc)
+    setColour (Label::textColourId, Colour (0xfffcfdfc));
+    setColour (Label::textWhenEditingColourId, Colour (0xffffffff));
     
-    setColour(ResizableWindow::backgroundColourId, Colour(0xff111111));
+    setColour(ResizableWindow::backgroundColourId, Colour(0xff253262)); // Azul Master Musica
     
-    //setColour (TextButton::buttonColourId, Colour (0xff363636));
-    setColour (TextButton::buttonColourId, Colour::fromFloatRGBA(0.15, 0.15, 0.15, 0.7)); // old one
-    //setColour (TextButton::buttonColourId, Colour::fromFloatRGBA(0.15, 0.15, 0.15, 0.0));
-    //setColour (TextButton::buttonOnColourId, Colour (0xff3d70c8));
-    setColour (TextButton::buttonOnColourId, Colour::fromFloatRGBA(0.5, 0.4, 0.6, 0.8));
-    setColour (TextButton::textColourOnId, Colour (0xddcccccc));
-    setColour (TextButton::textColourOffId, Colour (0xdde9e9e9));
+    // =========================================================================
+    // BOTÕES PRINCIPAIS (COMO O "CONECTAR")
+    // =========================================================================
+    // Cor Base do Botão: Slate Claro Master Musica (#455d58) com leve transparência
+    setColour (TextButton::buttonColourId, Colour::fromFloatRGBA(0.27, 0.364, 0.345, 0.85)); 
+    
+    // Cor do Botão Ativado/Hover: Cinza Claro Master Musica (#96938b)
+    setColour (TextButton::buttonOnColourId, Colour::fromFloatRGBA(0.588, 0.576, 0.545, 0.9));
+    
+    setColour (TextButton::textColourOnId, Colour (0xfffcfdfc));
+    setColour (TextButton::textColourOffId, Colour (0xfffcfdfc));
 
-    setColour (ToggleButton::textColourId, Colour (0xddcccccc));
+    setColour (ToggleButton::textColourId, Colour (0xfffcfdfc));
 
     
     setColour (SonoTextButton::outlineColourId, Colour::fromFloatRGBA(0.3, 0.3, 0.3, 0.5));
 
     setColour (ScrollBar::ColourIds::thumbColourId, Colour::fromFloatRGBA(0.4, 0.4, 0.4, 0.6));
     
-    //setColour (ComboBox::backgroundColourId, Colour (0xff161616));
-    setColour (ComboBox::backgroundColourId, Colour::fromFloatRGBA(0.15, 0.15, 0.15, 0.7));
-    setColour (ComboBox::textColourId, Colour (0xffe9e9e9));
+    // Menus Dropdown (ComboBox) com o Slate Claro
+    setColour (ComboBox::backgroundColourId, Colour::fromFloatRGBA(0.27, 0.364, 0.345, 0.7));
+    setColour (ComboBox::textColourId, Colour (0xfffcfdfc));
     setColour (ComboBox::outlineColourId, Colour::fromFloatRGBA(0.3, 0.3, 0.3, 0.5));
 
-    setColour (TextEditor::backgroundColourId, Colour (0xff050505));
-    setColour (TextEditor::textColourId, Colour (0xffe9e9e9));
-    setColour (TextEditor::highlightColourId, Colour (0xff5959f9));
+    setColour (TextEditor::backgroundColourId, Colour (0xff1e3234)); // Dark Slate Master Musica
+    setColour (TextEditor::textColourId, Colour (0xfffcfdfc));
+    setColour (TextEditor::highlightColourId, Colour (0xff96938b)); // Highlight com o Cinza Claro
     setColour (TextEditor::outlineColourId, Colour::fromFloatRGBA(0.3, 0.3, 0.3, 0.5));
-    setColour (TextEditor::focusedOutlineColourId, Colour::fromFloatRGBA(0.5, 0.5, 0.5, 0.7));
+    setColour (TextEditor::focusedOutlineColourId, Colour::fromFloatRGBA(0.588, 0.576, 0.545, 0.7));
 
-    setColour (Slider::backgroundColourId, Colour::fromFloatRGBA(0.2, 0.2, 0.2, 1.0));
-    setColour (Slider::rotarySliderOutlineColourId, Colour::fromFloatRGBA(0.2, 0.2, 0.2, 1.0));
-    setColour (Slider::textBoxTextColourId, Colour(0xddcccccc));
-    setColour (Slider::textBoxBackgroundColourId, Colour::fromFloatRGBA(0.05, 0.05, 0.05, 1.0));
-    setColour (Slider::textBoxHighlightColourId, Colour (0xaa555555));
+    // =========================================================================
+    // SLIDERS E BARRAS DE VOLUME
+    // =========================================================================
+    setColour (Slider::backgroundColourId, Colour::fromFloatRGBA(0.117, 0.196, 0.204, 1.0)); // Fundo Dark Slate
+    setColour (Slider::rotarySliderOutlineColourId, Colour::fromFloatRGBA(0.117, 0.196, 0.204, 1.0));
+    setColour (Slider::textBoxTextColourId, Colour(0xfffcfdfc));
+    setColour (Slider::textBoxBackgroundColourId, Colour::fromFloatRGBA(0.117, 0.196, 0.204, 1.0));
+    setColour (Slider::textBoxHighlightColourId, Colour (0xaa96938b));
     setColour (Slider::textBoxOutlineColourId, Colour::fromFloatRGBA(0.3, 0.3, 0.3, 0.5));
     
-    setColour (Slider::trackColourId, Colour::fromFloatRGBA(0.1, 0.4, 0.6, 0.8));
-    setColour (Slider::thumbColourId, Colour::fromFloatRGBA(0.5, 0.4, 0.6, 0.9));
-    //setColour (Slider::thumbColourId, Colour::fromFloatRGBA(0.2, 0.5, 0.7, 1.0));
-    setColour (Slider::rotarySliderFillColourId, Colour::fromFloatRGBA(0.5, 0.4, 0.6, 0.9));
+    // Cor da trilha e do botão que você arrasta no volume (Slate Claro)
+    setColour (Slider::trackColourId, Colour::fromFloatRGBA(0.27, 0.364, 0.345, 0.9));
+    setColour (Slider::thumbColourId, Colour::fromFloatRGBA(0.588, 0.576, 0.545, 1.0)); // Cinza Claro no pino
+    setColour (Slider::rotarySliderFillColourId, Colour::fromFloatRGBA(0.27, 0.364, 0.345, 0.9));
     
     setColour (TabbedButtonBar::tabOutlineColourId, Colour::fromFloatRGBA(0.3, 0.3, 0.3, 0.5));
 
-
     
-    setColour (ListBox::backgroundColourId, Colour::fromFloatRGBA(0.15, 0.15, 0.15, 0.7));
+    setColour (ListBox::backgroundColourId, Colour::fromFloatRGBA(0.145, 0.196, 0.384, 0.7)); // Azul Master Musica
     setColour (ListBox::outlineColourId, Colour::fromFloatRGBA(0.3, 0.3, 0.3, 0.5));
 
-    setColour (BubbleComponent::backgroundColourId, Colour::fromFloatRGBA(0.25, 0.25, 0.25, 1.0));
+    setColour (BubbleComponent::backgroundColourId, Colour::fromFloatRGBA(0.117, 0.196, 0.204, 1.0));
     setColour (BubbleComponent::outlineColourId, Colour::fromFloatRGBA(0.4, 0.4, 0.4, 0.5));
-    //setColour (TooltipWindow::textColourId, Colour(0xeecccccc));
-    setColour (TooltipWindow::textColourId, Colour(0xee222222));
-    setColour (TooltipWindow::backgroundColourId, Colour(0xeeffff99));
+    
+    setColour (TooltipWindow::textColourId, Colour(0xfffcfdfc));
+    setColour (TooltipWindow::backgroundColourId, Colour(0xff455d58)); // Slate Claro
 
-    setColour (PopupMenu::backgroundColourId, Colour::fromFloatRGBA(0.2, 0.2, 0.2, 1.0));
-    setColour (PopupMenu::highlightedBackgroundColourId, Colour::fromFloatRGBA(0.35, 0.35, 0.4, 1.0));
+    setColour (PopupMenu::backgroundColourId, Colour::fromFloatRGBA(0.117, 0.196, 0.204, 1.0));
+    setColour (PopupMenu::highlightedBackgroundColourId, Colour::fromFloatRGBA(0.27, 0.364, 0.345, 1.0));
 
-    setColour (SidePanel::backgroundColour, Colour::fromFloatRGBA(0.17, 0.17, 0.17, 1.0));
+    setColour (SidePanel::backgroundColour, Colour::fromFloatRGBA(0.145, 0.196, 0.384, 1.0));
 
 
     
-    //setColour (SonoDrawableButton::overOverlayColourId, Colour::fromFloatRGBA(0.8, 0.8, 0.8, 0.08));
-    //setColour (SonoDrawableButton::downOverlayColourId, Colour::fromFloatRGBA(0.8, 0.8, 0.8, 0.3));
     setColour (SonoDrawableButton::overOverlayColourId, Colour::fromFloatRGBA(0.8, 0.8, 0.8, 0.08));
     setColour (SonoDrawableButton::downOverlayColourId, Colour::fromFloatRGBA(0.8, 0.8, 0.8, 0.3));
     
-    setColour (DrawableButton::textColourId, Colour (0xffb9b9b9));
-    setColour (DrawableButton::textColourOnId, Colour (0xffe9e9e9));
+    setColour (DrawableButton::textColourId, Colour (0xfffcfdfc));
+    setColour (DrawableButton::textColourOnId, Colour (0xffffffff));
 
-    //setColour (DrawableButton::backgroundColourId, Colour (0xffb9b9b9));
-    setColour (DrawableButton::backgroundOnColourId, Colour::fromFloatRGBA(0.5, 0.4, 0.6, 0.8));
+    setColour (DrawableButton::backgroundOnColourId, Colour::fromFloatRGBA(0.588, 0.576, 0.545, 0.8)); // Cinza Claro Hover
 
-    //setColour (ConfigurationRowView::backgroundColourId, Colour::fromFloatRGBA(0.05, 0.05, 0.05, 1.0));
-    //setColour (ConfigurationRowView::selectedBackgroundColourId, Colour::fromFloatRGBA(0.15, 0.15, 0.15, 1.0));
-
-    setColour(ToggleButton::tickColourId, Colour::fromFloatRGBA(0.4, 0.8, 1.0, 1.0));
+    setColour(ToggleButton::tickColourId, Colour::fromFloatRGBA(0.588, 0.576, 0.545, 1.0)); // Checkbox em Cinza Claro
     
-    setColour (DirectoryContentsDisplayComponent::highlightColourId, Colour::fromFloatRGBA(0.1, 0.4, 0.6, 0.9));
-    setColour (DirectoryContentsDisplayComponent::textColourId, Colour (0xffe9e9e9));
-    // setColour (Label::textColourId, Colour (0xffe9e9e9));
+    setColour (DirectoryContentsDisplayComponent::highlightColourId, Colour::fromFloatRGBA(0.27, 0.364, 0.345, 0.9));
+    setColour (DirectoryContentsDisplayComponent::textColourId, Colour (0xfffcfdfc));
 
+    
     //myFont = Typeface::createSystemTypefaceFor (BinaryData::DejaVuSans_ttf, BinaryData::DejaVuSans_ttfSize);
     //setDefaultSansSerifTypefaceName("Gill Sans");
     //setDefaultSansSerifTypefaceName("Arial Unicode MS");
