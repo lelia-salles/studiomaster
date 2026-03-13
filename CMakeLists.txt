@@ -92,11 +92,10 @@ set (MacPList "<plist version=\"1.0\">
 </plist>")
 
 # ==============================================================================
-# DEFINIÇÃO DA FUNÇÃO DE CONSTRUÇÃO DO PLUGIN - MASTER MUSICA
+# DEFINIÇÃO DA FUNÇÃO DE CONSTRUÇÃO DO PLUGIN
 # ==============================================================================
 function(sono_add_custom_plugin_target target_name product_name formats is_instrument plugincode)
 
-    # 1. Definição de categorias baseada no argumento is_instrument
     if (is_instrument)
         set (vst3cats "Instrument" "Fx" "Network")
         set (vst2cat "vst2kPlugCategSynth") 
@@ -105,9 +104,8 @@ function(sono_add_custom_plugin_target target_name product_name formats is_instr
         set (vst2cat "vst2kPlugCategEffect")
     endif()
 
-    # 2. Criação do Plugin via JUCE
     juce_add_plugin("${target_name}"
-        IS_SYNTH TRUE                          # Habilitado para ser Instrumento
+        IS_SYNTH TRUE
         NEEDS_MIDI_INPUT TRUE
         NEEDS_MIDI_OUTPUT TRUE
         EDITOR_WANTS_KEYBOARD_FOCUS TRUE
@@ -118,13 +116,13 @@ function(sono_add_custom_plugin_target target_name product_name formats is_instr
         ICON_SMALL "images/sonobus_icon_mac_256.png"
         NEEDS_WEB_BROWSER FALSE
         VST2_CATEGORY "${vst2cat}"
-        VST3_CATEGORIES ${vst3cats}            # Usa a lista dinâmica ("Instrument" "Fx" "Network")
+        VST3_CATEGORIES ${vst3cats}
         AAX_CATEGORY "AAX_ePlugInCategory_None"
         LV2URI "https://mastermusica.com.br/lv2/studiomaster"
         HARDENED_RUNTIME_ENABLED TRUE
         HARDENED_RUNTIME_OPTIONS "com.apple.security.device.audio-input"
         PLIST_TO_MERGE "${MacPList}"
-        AU_MAIN_TYPE "kAudioUnitType_MusicEffect" # Híbrido para macOS
+        AU_MAIN_TYPE "kAudioUnitType_MusicEffect"
         PLUGIN_MANUFACTURER_CODE Mstr
         PLUGIN_CODE ${plugincode}
         FORMATS ${formats}
@@ -132,7 +130,6 @@ function(sono_add_custom_plugin_target target_name product_name formats is_instr
         PRODUCT_NAME "${product_name}"
     )
 
-    # 3. Automação de cópia após Build (Windows)
     if (WIN32)
         set_target_properties("${target_name}" PROPERTIES
             JUCE_COPY_PLUGIN_AFTER_BUILD TRUE
@@ -141,7 +138,6 @@ function(sono_add_custom_plugin_target target_name product_name formats is_instr
 
     juce_generate_juce_header("${target_name}")
 
-    # 4. Configurações de Includes e Bibliotecas
     set (HEADER_INCLUDES
         deps/aoo/lib
         deps/aoo/deps
@@ -158,7 +154,6 @@ function(sono_add_custom_plugin_target target_name product_name formats is_instr
 
     set(PlatSourceFiles Source/CrossPlatformUtils.h)
 
-    # Configurações de plataforma
     if (APPLE)
         list (APPEND HEADER_INCLUDES deps/mac/include)
         list (APPEND LIB_PATHS ${CMAKE_CURRENT_SOURCE_DIR}/deps/mac/lib)
@@ -182,13 +177,154 @@ function(sono_add_custom_plugin_target target_name product_name formats is_instr
 
         list (APPEND PLAT_COMPILE_DEFS _USE_MATH_DEFINES WINVER=0x0601 _WIN32_WINNT=0x0601)
     else()
-        # Linux
         list (APPEND PlatSourceFiles Source/CrossPlatformUtilsLinux.cpp)
         list (APPEND PLAT_COMPILE_DEFS JUCE_USE_MP3AUDIOFORMAT=1)
     endif()
 
-    # (Aqui seguem suas variáveis SourceFiles e AOOSourceFiles já listadas no projeto)
-    # ... [Mantenha a lista de arquivos Source/ e deps/ que você já tem] ...
+    set(SourceFiles
+        ${PlatSourceFiles}
+        Source/AutoUpdater.cpp
+        Source/AutoUpdater.h
+        Source/BeatToggleGrid.cpp
+        Source/BeatToggleGrid.h
+        Source/ChannelGroup.cpp
+        Source/ChannelGroup.h
+        Source/ChannelGroupsView.cpp
+        Source/ChannelGroupsView.h
+        Source/ChatView.cpp
+        Source/ChatView.h
+        Source/CompressorView.h
+        Source/ConnectView.cpp
+        Source/ConnectView.h
+        Source/DebugLogC.h
+        Source/EffectParams.cpp
+        Source/EffectParams.h
+        Source/EffectsBaseView.h
+        Source/ExpanderView.h
+        Source/GenericItemChooser.cpp
+        Source/GenericItemChooser.h
+        Source/JitterBufferMeter.cpp
+        Source/JitterBufferMeter.h
+        Source/LatencyMatchView.cpp
+        Source/LatencyMatchView.h
+        Source/LatencyMeasurer.cpp
+        Source/LatencyMeasurer.h
+        Source/LevelMeterLookAndFeelMethods.h
+        Source/LocalLatencyMeasurer.h
+        Source/MVerb.h
+        Source/Metronome.cpp
+        Source/Metronome.h
+        Source/MonitorDelayView.h
+        Source/OptionsView.cpp
+        Source/OptionsView.h
+        Source/ParametricEqView.h
+        Source/PeersContainerView.cpp
+        Source/PeersContainerView.h
+        Source/PolarityInvertView.h
+        Source/RandomSentenceGenerator.cpp
+        Source/RandomSentenceGenerator.h
+        Source/ReverbSendView.h
+        Source/ReverbView.h
+        Source/RunCumulantor.cpp
+        Source/RunCumulantor.h
+        Source/RunningCumulant.h
+        Source/SampleEditView.cpp
+        Source/SampleEditView.h
+        Source/SonoCallOutBox.cpp
+        Source/SonoCallOutBox.h
+        Source/SonoChoiceButton.cpp
+        Source/SonoChoiceButton.h
+        Source/SonoDrawableButton.cpp
+        Source/SonoDrawableButton.h
+        Source/SonoLookAndFeel.cpp
+        Source/SonoLookAndFeel.h
+        Source/SonoMultiStateDrawableButton.cpp
+        Source/SonoMultiStateDrawableButton.h
+        Source/SonoPlaybackProgressButton.cpp
+        Source/SonoPlaybackProgressButton.h
+        Source/SonoStandaloneFilterApp.cpp
+        Source/SonoStandaloneFilterWindow.h
+        Source/SonoTextButton.cpp
+        Source/SonoTextButton.h
+        Source/SonoUtility.h
+        Source/Soundboard.cpp
+        Source/Soundboard.h
+        Source/SoundboardButtonColors.h
+        Source/SoundboardChannelProcessor.cpp
+        Source/SoundboardChannelProcessor.h
+        Source/SoundboardEditView.cpp
+        Source/SoundboardEditView.h
+        Source/SoundboardProcessor.cpp
+        Source/SoundboardProcessor.h
+        Source/SoundboardView.cpp
+        Source/SoundboardView.h
+        Source/SoundSampleButtonColourPicker.cpp
+        Source/SoundSampleButtonColourPicker.h
+        Source/SonobusPluginEditor.cpp
+        Source/SonobusPluginEditor.h
+        Source/SonobusPluginProcessor.cpp
+        Source/SonobusPluginProcessor.h
+        Source/SonobusTypes.h
+        Source/SuggestNewGroupView.cpp
+        Source/SuggestNewGroupView.h
+        Source/VDONinjaView.h
+        Source/VersionInfo.cpp
+        Source/VersionInfo.h
+        Source/WaveformTransportComponent.h
+        Source/faustCompressor.h
+        Source/faustExpander.h
+        Source/faustLimiter.h
+        Source/faustParametricEQ.h
+        Source/mtdm.h
+        Source/zitaRev.h
+    )
+
+    set(AOOSourceFiles        
+        deps/aoo/lib/src/SLIP.hpp
+        deps/aoo/lib/src/client.cpp
+        deps/aoo/lib/src/client.hpp
+        deps/aoo/lib/src/codec_opus.cpp
+        deps/aoo/lib/src/codec_pcm.cpp
+        deps/aoo/lib/src/common.cpp
+        deps/aoo/lib/src/common.hpp
+        deps/aoo/lib/src/lockfree.hpp
+        deps/aoo/lib/src/net_utils.cpp
+        deps/aoo/lib/src/net_utils.hpp
+        deps/aoo/lib/src/server.cpp
+        deps/aoo/lib/src/server.hpp
+        deps/aoo/lib/src/sink.cpp
+        deps/aoo/lib/src/sink.hpp
+        deps/aoo/lib/src/source.cpp
+        deps/aoo/lib/src/source.hpp
+        deps/aoo/lib/src/sync.cpp
+        deps/aoo/lib/src/sync.hpp
+        deps/aoo/lib/src/time.cpp
+        deps/aoo/lib/src/time.hpp
+        deps/aoo/lib/src/time_dll.hpp
+        deps/aoo/lib/aoo/aoo.h
+        deps/aoo/lib/aoo/aoo.hpp
+        deps/aoo/lib/aoo/aoo_net.h
+        deps/aoo/lib/aoo/aoo_net.hpp
+        deps/aoo/lib/aoo/aoo_opus.h
+        deps/aoo/lib/aoo/aoo_pcm.h
+        deps/aoo/lib/aoo/aoo_types.h
+        deps/aoo/lib/aoo/aoo_utils.hpp
+        
+        deps/aoo/deps/md5/md5.c
+        deps/aoo/deps/md5/md5.h
+        deps/aoo/deps/oscpack/osc/OscOutboundPacketStream.cpp
+        deps/aoo/deps/oscpack/osc/OscPrintReceivedElements.cpp
+        deps/aoo/deps/oscpack/osc/OscReceivedElements.cpp
+        deps/aoo/deps/oscpack/osc/OscTypes.cpp
+        deps/aoo/deps/oscpack/osc/MessageMappingOscPacketListener.h
+        deps/aoo/deps/oscpack/osc/OscException.h
+        deps/aoo/deps/oscpack/osc/OscHostEndianness.h
+        deps/aoo/deps/oscpack/osc/OscOutboundPacketStream.h
+        deps/aoo/deps/oscpack/osc/OscPacketListener.h
+        deps/aoo/deps/oscpack/osc/OscPrintReceivedElements.h
+        deps/aoo/deps/oscpack/osc/OscReceivedElements.h
+        deps/aoo/deps/oscpack/osc/OscTypes.h
+    )
 
     target_sources("${target_name}" PRIVATE 
         ${SourceFiles} 
@@ -226,12 +362,138 @@ function(sono_add_custom_plugin_target target_name product_name formats is_instr
         JUCE_DIRECTSOUND=0
         JUCE_JACK=1
         JUCE_ALSA=1
+        JUCE_USE_ANDROID_OBOE=1
+        JUCE_USE_OBOE_STABILIZED_CALLBACK=1
         FF_AUDIO_ALLOW_ALLOCATIONS_IN_MEASURE_BLOCK=0
         SONOBUS_BUILD_VERSION="${VERSION}"
         ${PLAT_COMPILE_DEFS} 
     )
 
-    # ... [Mantenha o bloco juce_add_binary_data com suas imagens e localizações] ...
+    juce_add_binary_data("${target_name}_SBData" SOURCES
+        Source/wordmaker.g
+        Source/GoNotoKurrent-Regular.ttf
+        Source/DejaVuSans.ttf
+        localization/localized_de.txt
+        localization/localized_es.txt
+        localization/localized_fr.txt
+        localization/localized_it.txt
+        localization/localized_ja.txt
+        localization/localized_nl.txt
+        localization/localized_pt-br.txt
+        localization/localized_pt-pt.txt
+        localization/localized_ko.txt
+        localization/localized_ru.txt
+        localization/localized_zh-hans.txt
+        images/arrow-up-narrow.svg
+        images/arrow-down-narrow.svg
+        images/dots.svg
+        images/bar_click.wav
+        images/beat_click.wav
+        images/chat.svg
+        images/chat_dots.svg
+        images/checkmark.svg
+        images/chevron_forward.svg
+        images/continue.svg
+        images/copy_icon.svg
+        images/dice_icon_128.png
+        images/dispfull.svg
+        images/dispminimal.svg
+        images/dots.svg
+        images/dots_icon.png
+        images/dots_menu.png
+        images/expand_arrow_active.svg
+        images/expand_arrow_inactive.svg
+        images/eyedropper.svg
+        images/eye.svg
+        images/eye-off.svg
+        images/folder_icon.svg
+        images/hear-others.svg
+        images/hold.svg
+        images/incoming_allowed.svg
+        images/incoming_allowed_active.svg
+        images/incoming_disallowed.svg
+        images/keyboard.svg
+        images/keyboard_disabled.svg
+        images/keypad-num-disabled.svg
+        images/keypad-num.svg
+        images/lgc_bar.wav
+        images/link.svg
+        images/link_all.svg
+        images/link_up.svg
+        images/list_icon1.png
+        images/loop_icon.svg
+        images/loop_off_icon.png
+        images/met.svg
+        images/mic.svg
+        images/mic_disabled.svg
+        images/mic_pointing.svg
+        images/mesg-unread.svg
+        images/move_updown.svg
+        images/mute-others.svg
+        images/network.svg
+        images/oneshot.svg
+        images/outgoing_allowed.svg
+        images/outgoing_allowed_active.svg
+        images/outgoing_disallowed.svg
+        images/paste_icon.svg
+        images/pause_icon.svg
+        images/people.png
+        images/people.svg
+        images/person.png
+        images/person.svg
+        images/play_back_to_back.svg
+        images/play_icon.svg
+        images/play_simultaneous.svg
+        images/play_background.svg
+        images/plus_icon.svg
+        images/power.svg
+        images/power_sel.svg
+        images/record.svg
+        images/record_active.svg
+        images/record_active_alt.svg
+        images/rectape.svg
+        images/reset_buffer_icon.svg
+        images/send.svg
+        images/send_group.svg
+        images/send_group_small.svg
+        images/replay_icon.svg
+        images/settings_icon.svg
+        images/skipback_icon.svg
+        images/skipforward_icon.svg
+        images/sonobus_logo_96.png
+        images/sonobus_title_small.png
+        images/soundboard.svg
+        images/speaker.svg
+        images/speaker_disabled.svg
+        images/speaker_disabled_grey.svg
+        images/stop.svg
+        images/toggle.svg
+        images/triangle_disclosure.svg
+        images/triangle_disclosure_right.svg
+        images/urei_main.wav
+        images/videocam-outline.svg
+        images/x_icon.svg
+    )
+
+    set_target_properties(${target_name}_SBData PROPERTIES FOLDER "Targets")
+
+    if (UNIX AND NOT APPLE)
+       target_compile_options("${target_name}_SBData" PRIVATE -fPIC)
+       find_library(OPUS_LIB opus)
+       if (NOT OPUS_LIB)
+         message(FATAL_ERROR "opus library not found, please install libopus develop package")
+       endif()
+
+       if (JUCE_LINUX_TARGET_ARCHITECTURE MATCHES "arm" )
+          message(STATUS "ARM platform, adding -march=native")
+          target_compile_options(${target_name} PUBLIC -march=native)
+       endif()
+     
+       if (TARGET ${target_name}_Standalone)
+           string(TOLOWER ${target_name} tmptargname)
+           set_target_properties("${target_name}_Standalone" PROPERTIES OUTPUT_NAME ${tmptargname})
+       endif()
+    endif()
 
     target_link_directories("${target_name}" INTERFACE ${LIB_PATHS})
 
@@ -251,5 +513,4 @@ function(sono_add_custom_plugin_target target_name product_name formats is_instr
             
 endfunction()
 
-# CHAMADA FINAL ÚNICA
 sono_add_custom_plugin_target(StudioMaster "StudioMaster" "${FormatsToBuild}" TRUE "Stm1")
