@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPLv3-or-later WITH Appstore-exception
 // Copyright (C) 2020 Jesse Chappell
-
+// Modify by Master Musica
 
 
 #include "SonobusPluginProcessor.h"
@@ -275,6 +275,37 @@ void SonobusAudioProcessorEditor::configEditor(TextEditor *editor, bool passwd)
 SonobusAudioProcessorEditor::SonobusAudioProcessorEditor (SonobusAudioProcessor& p)
     : AudioProcessorEditor (&p), processor (p),  sonoLookAndFeel(p.getUseUniversalFont()), sonoSliderLNF(13), smallLNF(14), teensyLNF(11), panSliderLNF(12)
 {
+    // --- VERIFICADOR DE ATUALIZAÇÕES (MASTER MUSICA) ---
+    juce::Thread::launch([this]() {
+        juce::URL versionUrl("https://www.mastermusica.com.br/studiomaster_versao.json");
+        juce::String jsonString = versionUrl.readEntireTextStream();
+        
+        if (jsonString.isNotEmpty()) {
+            juce::var parsedJson = juce::JSON::parse(jsonString);
+            if (auto* obj = parsedJson.getDynamicObject()) {
+                juce::String versaoRecente = obj->getProperty("versao_atual").toString();
+                juce::String linkBaixar = obj->getProperty("link_download").toString();
+                
+                juce::String minhaVersao = JucePlugin_VersionString;
+                
+                if (versaoRecente != minhaVersao && versaoRecente.isNotEmpty()) {
+                    juce::MessageManager::callAsync([versaoRecente, linkBaixar]() {
+                        if (juce::AlertWindow::showOkCancelBox(
+                            juce::AlertWindow::InfoIcon,
+                            "Atualização Disponível",
+                            "Uma nova versão do StudioMaster (" + versaoRecente + ") está disponível!\n\nDeseja baixar agora?",
+                            "Sim, atualizar",
+                            "Mais tarde")) 
+                        {
+                            juce::URL(linkBaixar).launchInDefaultBrowser();
+                        }
+                    });
+                }
+            }
+        }
+    });
+    // ---------------------------------------------------
+
     if (p.getUseUniversalFont()) {
 #if JUCE_ANDROID
         SonoLookAndFeel::setFontScale(1.0f);
@@ -340,6 +371,7 @@ SonobusAudioProcessorEditor::SonobusAudioProcessorEditor (SonobusAudioProcessor&
         currConnectionInfo.serverHost = DEFAULT_SERVER_HOST;
         currConnectionInfo.serverPort = DEFAULT_SERVER_PORT;
     }
+}
 
     String lastusername = processor.getCurrentUsername().trim();
     if (lastusername.isNotEmpty()) {
@@ -5945,13 +5977,13 @@ void SonobusAudioProcessorEditor::populateRecentSetupsMenu(PopupMenu & popup)
 
 StringArray SonobusAudioProcessorEditor::SonobusMenuBarModel::getMenuBarNames()
 {
-    return StringArray(TRANS("File"),
+  return StringArray(TRANS("File"),
                        TRANS("Connect"),
                        TRANS("Group"),
                        TRANS("Transport"),
-                       TRANS("View")
+                       TRANS("View"),
+                       "Master Musica" 
                        );
-    //TRANS("Help"));
 }
 
 PopupMenu SonobusAudioProcessorEditor::SonobusMenuBarModel::getMenuForIndex (int topLevelMenuIndex, const String& /*menuName*/)
@@ -6019,6 +6051,7 @@ PopupMenu SonobusAudioProcessorEditor::SonobusMenuBarModel::getMenuForIndex (int
             break;
 
         case MenuHelpIndex:
+            retval.addItem(2001, "Master Musica");
             break;
     }
     
@@ -6027,6 +6060,12 @@ PopupMenu SonobusAudioProcessorEditor::SonobusMenuBarModel::getMenuForIndex (int
 
 void SonobusAudioProcessorEditor::SonobusMenuBarModel::menuItemSelected (int menuItemID, int topLevelMenuIndex)
 {
+    
+    if (menuItemID == 2001) {
+        juce::URL("https://www.mastermusica.com.br").launchInDefaultBrowser();
+    }
+    
+
 #if JUCE_MAC
     if (topLevelMenuIndex == -1) {
         switch (menuItemID) {
@@ -6040,4 +6079,3 @@ void SonobusAudioProcessorEditor::SonobusMenuBarModel::menuItemSelected (int men
     }
 #endif
 }
-
