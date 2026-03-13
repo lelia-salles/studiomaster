@@ -1,5 +1,5 @@
 # To get started on a new plugin, copy this entire folder (containing this file and C++ sources) to
-# a convenient location, and then start making modifications.
+# a convenient location, and then start making modification
 
 cmake_minimum_required(VERSION 3.15)
 
@@ -91,18 +91,16 @@ set (MacPList "<plist version=\"1.0\">
 </dict>
 </plist>")
 
-function(sono_add_custom_plugin_target target_name product_name formats is_instrument plugincode)
-
-   if (is_instrument)
-        set (vst3cats Instrument Network)
-        set (vst2cat "kPlugCategSynth")
+if (is_instrument)
+        set (vst3cats "Instrument" "Fx" "Network")
+        set (vst2cat "vst2kPlugCategSynth") # Adicionei o prefixo 'vst2' que o JUCE espera
     else()
-        set (vst3cats Fx Network)        
-        set (vst2cat "kPlugCategEffect")
-   endif()
+        set (vst3cats "Fx" "Network")        
+        set (vst2cat "vst2kPlugCategEffect")
+    endif()
 
     juce_add_plugin("${target_name}"
-        IS_SYNTH "${is_instrument}"
+        IS_SYNTH  TRUE
         NEEDS_MIDI_INPUT TRUE
         NEEDS_MIDI_OUTPUT TRUE
         EDITOR_WANTS_KEYBOARD_FOCUS TRUE
@@ -113,8 +111,8 @@ function(sono_add_custom_plugin_target target_name product_name formats is_instr
         ICON_BIG "images/sonobus_icon_mac_1024.png"
         ICON_SMALL "images/sonobus_icon_mac_256.png"
         NEEDS_WEB_BROWSER FALSE
-        VST2_CATEGORY "${vst2cat}"
-        VST3_CATEGORIES "${vst3cats}"
+        VST2_CATEGORY "vst2kPlugCategSynth"
+        VST3_CATEGORIES "Instrument" "Fx" "Network" 
         AAX_CATEGORY "AAX_ePlugInCategory_None"
 
     LV2URI "https://mastermusica.com.br/lv2/studiomaster"
@@ -532,8 +530,4 @@ function(sono_add_custom_plugin_target target_name product_name formats is_instr
             
 endfunction()
 
-# most of the targets
-sono_add_custom_plugin_target(StudioMaster StudioMaster "${FormatsToBuild}" FALSE  "NBus")
-
-# add VSTi target
-sono_add_custom_plugin_target(StudioMasterInst "StudioMasterInstrument" "VST3" TRUE  "IBus")
+sono_add_custom_plugin_target(StudioMaster "StudioMaster" "${FormatsToBuild}" TRUE "Stm1")
