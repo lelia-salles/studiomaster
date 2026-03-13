@@ -324,11 +324,9 @@ SonobusAudioProcessorEditor::SonobusAudioProcessorEditor (SonobusAudioProcessor&
 
         if (username.isEmpty()) {
 #if JUCE_IOS
-            //String username = SystemStats::getFullUserName(); //SystemStats::getLogonName();
-            username = SystemStats::getComputerName(); //SystemStats::getLogonName();
+            username = SystemStats::getComputerName();
 #else
-            username = SystemStats::getFullUserName(); //SystemStats::getLogonName();
-            //if (username.length() > 0) username = username.replaceSection(0, 1, username.substring(0, 1).toUpperCase());
+            username = SystemStats::getFullUserName();
 #endif
         }
         if (username.isEmpty()) { // fallback
@@ -340,7 +338,8 @@ SonobusAudioProcessorEditor::SonobusAudioProcessorEditor (SonobusAudioProcessor&
         currConnectionInfo.serverHost = DEFAULT_SERVER_HOST;
         currConnectionInfo.serverPort = DEFAULT_SERVER_PORT;
     }
-}
+
+
     String lastusername = processor.getCurrentUsername().trim();
     if (lastusername.isNotEmpty()) {
         currConnectionInfo.userName = lastusername;
