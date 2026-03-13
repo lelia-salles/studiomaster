@@ -275,37 +275,6 @@ void SonobusAudioProcessorEditor::configEditor(TextEditor *editor, bool passwd)
 SonobusAudioProcessorEditor::SonobusAudioProcessorEditor (SonobusAudioProcessor& p)
     : AudioProcessorEditor (&p), processor (p),  sonoLookAndFeel(p.getUseUniversalFont()), sonoSliderLNF(13), smallLNF(14), teensyLNF(11), panSliderLNF(12)
 {
-    // --- VERIFICADOR DE ATUALIZAÇÕES (MASTER MUSICA) ---
-    juce::Thread::launch([this]() {
-        juce::URL versionUrl("https://www.mastermusica.com.br/studiomaster_versao.json");
-        juce::String jsonString = versionUrl.readEntireTextStream();
-        
-        if (jsonString.isNotEmpty()) {
-            juce::var parsedJson = juce::JSON::parse(jsonString);
-            if (auto* obj = parsedJson.getDynamicObject()) {
-                juce::String versaoRecente = obj->getProperty("versao_atual").toString();
-                juce::String linkBaixar = obj->getProperty("link_download").toString();
-                
-                juce::String minhaVersao = JucePlugin_VersionString;
-                
-                if (versaoRecente != minhaVersao && versaoRecente.isNotEmpty()) {
-                    juce::MessageManager::callAsync([versaoRecente, linkBaixar]() {
-                        if (juce::AlertWindow::showOkCancelBox(
-                            juce::AlertWindow::InfoIcon,
-                            "Atualização Disponível",
-                            "Uma nova versão do StudioMaster (" + versaoRecente + ") está disponível!\n\nDeseja baixar agora?",
-                            "Sim, atualizar",
-                            "Mais tarde")) 
-                        {
-                            juce::URL(linkBaixar).launchInDefaultBrowser();
-                        }
-                    });
-                }
-            }
-        }
-    });
-    // ---------------------------------------------------
-
     if (p.getUseUniversalFont()) {
 #if JUCE_ANDROID
         SonoLookAndFeel::setFontScale(1.0f);
@@ -372,7 +341,6 @@ SonobusAudioProcessorEditor::SonobusAudioProcessorEditor (SonobusAudioProcessor&
         currConnectionInfo.serverPort = DEFAULT_SERVER_PORT;
     }
 }
-
     String lastusername = processor.getCurrentUsername().trim();
     if (lastusername.isNotEmpty()) {
         currConnectionInfo.userName = lastusername;
